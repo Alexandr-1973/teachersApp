@@ -4,7 +4,7 @@ import css from "./HomePages.module.css"
 const HomePage = () => {
   // const adr= "../../images/block-opt.jpg";
   return (
-    <>
+    <div className={css.pageDiv}>
       <div className={css.genDiv} >
         <div className={css.text}>
           <h1 className={css.h}>Unlock your potential with the best <span className={css.spanText}>language </span> tutors</h1>
@@ -27,7 +27,7 @@ const HomePage = () => {
 <li className={css.li}>200 +<span className={css.span}><span>Tutor</span>nationalities</span></li>
 
 	  </ul>
-    </>
+    </div>
   );
 };
 

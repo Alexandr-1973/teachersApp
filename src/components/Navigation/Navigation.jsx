@@ -15,8 +15,8 @@ const Navigation = () => {
         </Link>
       {/* </div> */}
       <ul className={css.pages}>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/teachers">Teachers</NavLink></li>
+        <li><NavLink to="/" className={({isActive})=>(isActive?css.active :"")}>Home</NavLink></li>
+        <li><NavLink to="/teachers" className={({isActive})=>(isActive?css.active :"")}>Teachers</NavLink></li>
       </ul>
       <ul className={css.login}>
         <li><button className={css.logButton}><svg width="20px" height="20px"><use href={`${sprite}#icon-log-in-01`}></use></svg>Log in</button></li>
