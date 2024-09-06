@@ -1,0 +1,119 @@
+.h {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #121417;
+  margin-bottom: 20px;
+}
+
+.p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.375;
+  color: rgba(18, 20, 23, 0.8);
+  margin-bottom: 40px;
+}
+
+.eye {
+  position: absolute;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.input {
+  
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.375;
+  color: #121417;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  /* padding: 16px 377px 16px 18px; */
+  /* padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 18px; */
+  padding: 16px 18px;
+  /* width: 438px;
+height: 54px; */
+}
+
+.yupP {
+	margin-bottom: 18px;
+	font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.375;
+  color: #9fbaae;
+}
+
+.yupPassword {
+	margin-bottom: 40px;
+	font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.375;
+  color: #9fbaae;
+}
+
+.passwordLabel {
+ 
+	position: relative;
+  display: flex;
+  
+  align-items: center;
+  
+  /* border: 1px solid rgba(18, 20, 23, 0.1); */
+  /* border-radius: 12px; */
+
+  
+}
+
+.passwordInput {
+  padding-right: 50px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.375;
+  color: #121417;
+
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 18px;
+  width: 100%;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+
+  /* margin-bottom: 18px; */
+}
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  border-radius: 12px;
+  padding: 16px 210px;
+  width: 438px;
+  height: 60px;
+  background-color: #9fbaae;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.55556;
+  color: #121417;
+  margin-bottom: 64px;
+  border: none;
+  margin: 0;
+  padding-inline: 0;
+  padding-block: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

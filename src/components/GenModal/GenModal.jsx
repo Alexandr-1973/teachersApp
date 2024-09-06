@@ -1,9 +1,13 @@
 import Modal from "react-modal";
 import css from "./GenModal.module.css"
-import LoginForm from "../LoginForm/LoginForm";
-import RegistrationForm from "../RegistrationForm/RegistrationForm";
+import GenForm from "../GenForm/GenForm";
 
-const GenModal = ({isModal, setIsModal, component})=>{
+import { IoMdClose } from "react-icons/io";
+
+
+Modal.setAppElement('#root');
+
+const GenModal = ({isModal, setIsModal, componentObject})=>{
 
 	function closeModal() {
 		setIsModal(false);
@@ -12,13 +16,19 @@ const GenModal = ({isModal, setIsModal, component})=>{
 	return (
 		<Modal
         isOpen={isModal}
+        // appElement={document.getElementById("hereIsYourRootElementId")}
+        // appElement={document.getElementById('app')}
+        // ariaHideApp={false}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={css.modal}
-        contentLabel="Example Modal"
+        className={css.modal}
+        // style={css.modal}
+        // contentLabel="Example Modal"
       >
-
-{component === "LoginForm" ? <LoginForm/> : <RegistrationForm/>}
+{/* <button className={css.closeButton}> */}
+  <IoMdClose className={css.icon} onClick={closeModal}/>
+  {/* </button> */}
+<GenForm componentObject={componentObject}/>
 
         {/* <h2 >Hello</h2>
         <button onClick={closeModal}>close</button>

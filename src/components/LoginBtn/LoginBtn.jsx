@@ -1,27 +1,35 @@
 import { useState } from "react";
 import sprite from "../../images/symbol-defs.svg";
 import css from "./LoginBtn.module.css";
-import Modal from "react-modal"
+// import Modal from "react-modal";
 import GenModal from "../GenModal/GenModal";
 
+const LoginBtn = () => {
+  const [isModal, setIsModal] = useState(false);
 
-const LoginBtn=()=>{
-	const [isModal, setIsModal]=useState(false);
+  // function closeModal() {
+  // 	setIsModal(false);
+  //   }
+  const componentObject = {
+    h: "Log In",
+    p: "Welcome back! Please enter your credentials to access your account and continue your search for an teacher.",
+  button:"Log In"
+  };
 
-	// function closeModal() {
-	// 	setIsModal(false);
-	//   }
-
-	return (
-		<>
-		<button className={css.logButton} onClick={()=>setIsModal(true)}>
-		<svg width="20px" height="20px">
-		  <use href={`${sprite}#icon-log-in-01`}></use>
-		</svg>
-		Log in
-	  </button>
-<GenModal isModal={isModal} setIsModal={setIsModal} component="LoginForm"/>
-	    {/* <Modal
+  return (
+    <>
+      <button className={css.logButton} onClick={() => setIsModal(true)}>
+        <svg width="20px" height="20px">
+          <use href={`${sprite}#icon-log-in-01`}></use>
+        </svg>
+        Log in
+      </button>
+      <GenModal
+        isModal={isModal}
+        setIsModal={setIsModal}
+        componentObject={componentObject}
+      />
+      {/* <Modal
         isOpen={isModal}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
@@ -39,9 +47,8 @@ const LoginBtn=()=>{
           <button>the modal</button>
         </form>
       </Modal> */}
-	  </>
-
-	)
-}
+    </>
+  );
+};
 
 export default LoginBtn;
