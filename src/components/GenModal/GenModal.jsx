@@ -16,13 +16,22 @@ const GenModal = ({isModal, setIsModal, componentObject})=>{
 	return (
 		<Modal
         isOpen={isModal}
+        // overlayClassName={css.overlay}
         // appElement={document.getElementById("hereIsYourRootElementId")}
         // appElement={document.getElementById('app')}
         // ariaHideApp={false}
         // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         className={css.modal}
-        // style={css.modal}
+        style={{
+          overlay: {
+            // position: 'fixed',
+            // top: 0,
+            // left: 0,
+            // right: 0,
+            // bottom: 0,
+            backgroundColor: 'rgba(159, 186, 174, 0.2)'
+          }}}
         // contentLabel="Example Modal"
       >
 {/* <button className={css.closeButton}> */}

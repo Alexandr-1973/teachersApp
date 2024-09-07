@@ -1,16 +1,21 @@
 .modal {
 	/* width: 20%; */
-	min-width: 320px;
+	min-width: 250px;
 	max-width: 565px;
 	height: auto;
-	border: 3px solid red;
+	/* border: 3px solid red; */
 	display: flex;
 	flex-direction: column;
 	padding: 64px;
 	position: relative;
-	background-color: #fff;
+	background-color:#fff;
 border-radius: 30px;
+margin-left: auto;
+margin-right: auto;
+margin-top: 20px;
+/* opacity: 1; */
 }
+
 
 .closeButton {
 	
