@@ -6,6 +6,10 @@ import { LuEyeOff } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
 import { useState } from "react";
 
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+// import { getAuth } from "firebase/auth";
+
 const schemaRegistration = yup
   .object({
     name: yup.string().required(),
@@ -29,6 +33,20 @@ const schemaLogin = yup
   .required();
 
 const GenForm = ({ componentObject }) => {
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAKfUSwVw_sRB4jv_1UdKFU0AaUvUIzzac",
+    authDomain: "teachers-app-bc996.firebaseapp.com",
+    databaseURL: "https://teachers-app-bc996-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "teachers-app-bc996",
+    storageBucket: "teachers-app-bc996.appspot.com",
+    messagingSenderId: "688526414582",
+    appId: "1:688526414582:web:59070d328be963fc3792d7"
+  };
+
+const app=initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
   const [type, setType] = useState("password");
 
   const {
@@ -40,7 +58,51 @@ const GenForm = ({ componentObject }) => {
       componentObject.h === "Registration" ? schemaRegistration : schemaLogin
     ),
   });
-  const onSubmit = (data) => console.log(data);
+  // const onSubmit = (data) => console.log(data);
+  const onSubmit=(data)=>{
+    // const app=initializeApp(firebaseConfig);
+    // const auth = getAuth(app);
+    // const auth = getAuth();
+
+    if (componentObject.h === "Registration") {
+
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    console.log(user);
+    
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    console.log(errorCode, errorMessage);
+    
+    // ..
+  });
+}
+
+if (componentObject.h === "Log In") {
+
+  signInWithEmailAndPassword(auth, data.email, data.password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user);
+    
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+    
+  });
+}
+
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
