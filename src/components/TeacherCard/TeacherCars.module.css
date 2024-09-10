@@ -1,0 +1,29 @@
+.genDiv {
+	display: flex;
+}
+
+
+.textDiv {
+	display: flex;
+	flex-direction: column;
+}
+
+.languages {
+	display: flex;
+}
+
+.hUl {
+	display: flex;
+}
+
+.language {
+	display: flex;
+} 
+
+.languageLi {
+	display: flex;
+}
+
+.levelsUl {
+	display: flex;
+}
