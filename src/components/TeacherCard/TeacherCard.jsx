@@ -2,6 +2,9 @@ import { useState } from "react";
 import css from "./TeacherCars.module.css";
 import AddCardInfo from "../AddCardInfo/AddCardInfo";
 import TrialBtn from "../TrialBtn/TrialBtn";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { HiOutlineBookOpen } from "react-icons/hi2";
+import { FaStar } from "react-icons/fa6";
 
 const TeacherCard = ({ teacher }) => {
   const [openAddInfo, setOpenAddInfo] = useState(false);
@@ -10,55 +13,79 @@ const TeacherCard = ({ teacher }) => {
 
   return (
     <div className={css.genDiv}>
-      <img src={teacher.avatar_url} alt="" />
+      <img
+        src={teacher.avatar_url}
+        alt="Teacher's photo"
+        className={css.teacherImg}
+      />
       <div className={css.textDiv}>
-        <div className={css.languages}>
-          <span>Languages</span>
-          <ul className={css.hUl}>
-            <li>Lessons online</li>
-            <li>Lessons done: {teacher.lessons_done}</li>
-            <li>Rating: {teacher.rating}</li>
-            <li>Price / 1 hour: {teacher.price_per_hour}$</li>
-          </ul>
+        <div className={css.languagesDiv}>
+          <p className={css.languageP}>Languages</p>
+          <div className={css.highDiv}>
+            <p className={css.highPIcon}>
+              <HiOutlineBookOpen className={css.bookIcon}/>
+              Lessons online
+            </p>
+            <svg
+              width="2"
+              height="16"
+              viewBox="0 0 2 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M1 0V16" stroke="rgba(18, 20, 23, 0.2)" />
+            </svg>
+            <p className={css.highP}>Lessons done: {teacher.lessons_done}</p>
+            <svg
+              width="2"
+              height="16"
+              viewBox="0 0 2 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M1 0V16" stroke="rgba(18, 20, 23, 0.2)" />
+            </svg>
+      <p className={css.highPIcon}>
+              <FaStar className={css.starIcon}/>
+              Rating: {teacher.rating}
+            </p>
+            <svg
+              width="2"
+              height="16"
+              viewBox="0 0 2 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M1 0V16" stroke="rgba(18, 20, 23, 0.2)" />
+            </svg>
+            <p className={css.highP}>
+              Price / 1 hour: <span className={css.greenSpan}> {teacher.price_per_hour}$</span>
+            </p>
+          </div>
+          <IoMdHeartEmpty className={css.heartIcon}/>
         </div>
 
-        <h2>
+        <h2 className={css.teacherName}>
           {teacher.name} {teacher.surname}
         </h2>
-        <ul>
+
+        <ul className={css.speaksUl}>
           <li className={css.languageLi}>
-            <span>Speaks:</span>
-            <ul className={css.language}>
-              {teacher.languages &&
-                teacher.languages.map((language) => {
-                  return (
-                    <li key={language.indexOf(teacher.languages)}>
-                      {language}
-                    </li>
-                  );
-                })}
-            </ul>
+            Speaks:
+            <p className={css.languageSpeaksFirstP}>{teacher.languages.join(", ")}</p>
           </li>
-          <li>
-            <span>Lesson Info:</span>
-            {teacher.lesson_info}
-          </li>
+
           <li className={css.languageLi}>
-            <span>Conditions</span>
-            <ul className={css.language}>
-              {teacher.conditions &&
-                teacher.conditions.map((condition) => {
-                  return (
-                    <li key={teacher.conditions.indexOf(condition)}>
-                      {condition}
-                    </li>
-                  );
-                })}
-            </ul>
+            Lesson Info: <p className={css.languageSpeaksP}>{teacher.lesson_info}</p>
+          </li>
+
+          <li className={css.languageLi}>
+            Conditions: <p className={css.languageSpeaksP}>{teacher.conditions.join(" ")}</p>
           </li>
         </ul>
+
         {!openAddInfo && (
-          <p
+          <p className={css.readMoreButton}
             onClick={() => {
               setOpenAddInfo(true);
             }}
@@ -72,7 +99,7 @@ const TeacherCard = ({ teacher }) => {
         <ul className={css.levelsUl}>
           {teacher.levels &&
             teacher.levels.map((level) => {
-              return <li key={teacher.levels.indexOf(level)}>{level}</li>;
+              return <li className={css.levelLi} key={teacher.levels.indexOf(level)}>{level}</li>;
             })}
         </ul>
         {openAddInfo && <TrialBtn />}

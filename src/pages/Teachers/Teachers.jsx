@@ -7,7 +7,7 @@ import firebase from "firebase/compat/app";
 import { getDatabase, ref, child, get, query, startAt, endAt, limitToLast, limitToFirst, orderByKey  } from "firebase/database";
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
 import { useEffect, useState } from "react";
-
+import css from "./Teachers.module.css"
 
 const Teachers = () => {
 
@@ -83,7 +83,7 @@ console.log(teachers);
 
 
   return (
-    <ul>
+    <ul className={css.teachersUl}>
      {teachers && teachers.map((teacher)=>{
       return (
         <li key={teachers.indexOf(teacher)}>

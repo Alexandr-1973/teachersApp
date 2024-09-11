@@ -1,0 +1,11 @@
+.teachersUl {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* margin-left: auto;
+  margin-right: auto; */
+  gap: 53px;
+   background-color: #f8f8f8;
+   padding-top: 32px;
+}
