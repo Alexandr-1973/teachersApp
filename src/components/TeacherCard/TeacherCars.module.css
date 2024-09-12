@@ -1,196 +1,201 @@
 .genDiv {
-	display: flex;
-	/* margin-left: auto; */
-	/* max-width: 1184px; */
-	border-radius: 24px;
-	background-color: #fff;
-	padding: 24px;
-	gap: 48px;
-	width: 1184px;
+  display: flex;
+  /* margin-left: auto; */
+  /* max-width: 1184px; */
+  border-radius: 24px;
+  background-color: #fff;
+  padding: 24px;
+  gap: 24px;
+  /* column-gap: 48px;
+  row-gap: 24px; */
+  /* width: 1184px; */
+  max-width: max(1184px, 91%);
+  overflow: scroll;
+  flex-wrap: wrap;
+  position: relative;
 }
 
 .teacherImg {
-width: 120px;
-height: 120px;
-/* border-radius: 50%; */
-padding: 12px;
+  width: 120px;
+  height: 120px;
+  /* border-radius: 50%; */
+  padding: 12px;
 
-border: 3px solid #fbe9ba;
-border-radius: 100px;
-
+  border: 3px solid #fbe9ba;
+  border-radius: 100px;
 }
 
 .textDiv {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .languagesDiv {
-	display: flex;
-	/* width: 100%; */
-	align-items: center;
-	/* outline: 2px solid red; */
-	height: 16px;
-margin-bottom: 8px;
+  display: flex;
+  /* width: 100%; */
+  align-items: center;
+  /* outline: 2px solid red; */
+  /* height: 16px; */
+  margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .highDiv {
-	display: flex;
-	/* justify-content: space-between; */
-	align-items: center;
-	margin-right: 64px;
-	column-gap: 16px;
-	
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin-right: 64px;
+  column-gap: 16px;
+  flex-wrap: wrap;
 }
-
 
 .highP {
-	/* padding-left: 16px;
+  /* padding-left: 16px;
 	padding-right: 16px; */
-	/* border-left: 1px solid rgba(18, 20, 23, 0.2); */
-	font-family: "Roboto", sans-serif;
-font-weight: 500;
-font-size: 16px;
-line-height: 1.5;
-color: #121417;
-display: flex;
-margin: 0;
-padding: 0;
-
+  /* border-left: 1px solid rgba(18, 20, 23, 0.2); */
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #121417;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
 }
-
-
 
 .highPIcon {
-	display: flex;
-	align-items: center;
-	column-gap: 8px;
-	
-	font-family: "Roboto", sans-serif;
-	font-weight: 500;
-	font-size: 16px;
-	line-height: 1.5;
-	color: #121417;
-margin: 0;
-padding: 0;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #121417;
+  margin: 0;
+  padding: 0;
 }
 
-
 .languageP {
-	font-family: "Roboto", sans-serif;
-font-weight: 500;
-font-size: 16px;
-line-height: 1.5;
-color: #8a8a89;
-margin: 0;
-padding: 0;
-	margin-right: 190px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #8a8a89;
+  margin: 0;
+  padding: 0;
+  margin-right: 190px;
 }
 
 .lessonInfoLi {
-	/* word-break:keep-all; */
+  /* word-break:keep-all; */
 }
 
-
-
 .starIcon {
-	fill: #ffc531;
-	stroke: 1.20px solid #ffc531;
-	width: 16px;
-	height: 16px;
+  fill: #ffc531;
+  stroke: 1.2px solid #ffc531;
+  width: 16px;
+  height: 16px;
 }
 
 .bookIcon {
-	width: 16px;
-	height: 16px;
+  width: 16px;
+  height: 16px;
 }
 
 .greenSpan {
-	/* padding: 0;
+  /* padding: 0;
 	margin: 0; */
-	color: #38cd3e;
-	margin-left: 4px;
+  color: #38cd3e;
+  margin-left: 4px;
 }
 
 .heartIcon {
-	width: 26px;
-	height: 22px;
-	stroke-width: 2px;
-stroke: #121417;
+  width: 26px;
+  height: 22px;
+  stroke-width: 2px;
+  stroke: #121417;
+  position: absolute;
+  top: 24px;
+  right: 24px;
 }
 
 .teacherName {
-	margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 .speaksUl {
-	margin-bottom: 16px;
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-
 .readMoreButton {
-	margin-bottom: 32px;
+  margin-bottom: 32px;
 }
 
 .languageLi {
-	display: flex;
-	align-items: center;
-	font-family: "Roboto", sans-serif;
-font-weight: 500;
-font-size: 16px;
-line-height: 1.5;
-color: #8a8a89;
-	
+  display: flex;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #8a8a89;
+  flex-wrap: wrap;
 }
 
 .languageSpeaksFirstP {
-	margin-left: 4px;
-	text-decoration: underline;
-	text-decoration-skip-ink: none;
-	color: #121417;
+  margin-left: 4px;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #121417;
 }
 
 .languageSpeaksP {
-	margin-left: 4px;
-	color: #121417;
-	
+  margin-left: 4px;
+  color: #121417;
 }
 
 .readMoreButton {
-	font-family: "Roboto", sans-serif;
-font-weight: 500;
-font-size: 16px;
-line-height: 1.5;
-text-decoration: underline;
-text-decoration-skip-ink: none;
-color: #121417;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #121417;
 }
 
 .levelsUl {
-	display: flex;
-	gap: 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .levelLi {
-	border: 1px solid rgba(18, 20, 23, 0.2);
-border-radius: 35px;
-padding: 8px 12px;
-/* width: 124px; */
-height: 32px;
-font-family: "Roboto", sans-serif;
-font-weight: 500;
-font-size: 14px;
-line-height: 1.14286;
-color: #121417;
-display: flex;
-justify-content: center;
-align-items: center;
+  border: 1px solid rgba(18, 20, 23, 0.2);
+  border-radius: 35px;
+  padding: 8px 12px;
+  /* width: 124px; */
+  /* height: 32px; */
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14286;
+  color: #121417;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .levelLi:first-child {
-	background-color: #f4c550;
-	border: none;
+  background-color: #f4c550;
+  border: none;
 }
