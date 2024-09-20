@@ -24,11 +24,10 @@
   height: 20px;
   cursor: pointer;
   border: none;
-  stroke:  #9fbaae;
+  stroke: #9fbaae;
 }
 
 .input {
-  
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -43,25 +42,22 @@
   padding: 16px 18px;
   /* width: 438px;
 height: 54px; */
-/* background-color: #fff; */
+  /* background-color: #fff; */
 }
 
-
-
 .yupP {
-	margin-bottom: 18px;
-	font-family: "Roboto", sans-serif;
+  margin-bottom: 18px;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.375;
   color: red;
   padding-left: 18px;
-  
 }
 
 .yupPassword {
-	margin-bottom: 40px;
-	font-family: "Roboto", sans-serif;
+  margin-bottom: 40px;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.375;
@@ -70,16 +66,13 @@ height: 54px; */
 }
 
 .passwordLabel {
- 
-	position: relative;
+  position: relative;
   display: flex;
-  
+
   align-items: center;
-  
+
   /* border: 1px solid rgba(18, 20, 23, 0.1); */
   /* border-radius: 12px; */
-
-  
 }
 
 .passwordInput {

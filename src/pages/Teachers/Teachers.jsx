@@ -4,17 +4,23 @@ import axios from "axios";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat/app";
-import { getDatabase, ref, child, get, query, startAt, endAt, limitToLast, limitToFirst, orderByKey  } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  child,
+  get,
+  query,
+  startAt,
+  endAt,
+  limitToLast,
+  limitToFirst,
+  orderByKey,
+} from "firebase/database";
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
 import { useEffect, useState } from "react";
-import css from "./Teachers.module.css"
+import css from "./Teachers.module.css";
 
 const Teachers = () => {
-
-  
-
- 
-
   const firebaseConfig = {
     apiKey: "AIzaSyAKfUSwVw_sRB4jv_1UdKFU0AaUvUIzzac",
     authDomain: "teachers-app-bc996.firebaseapp.com",
@@ -31,30 +37,26 @@ const Teachers = () => {
 
   const db = getDatabase();
 
-  const [teachers, setTeachers]=useState();
+  const [teachers, setTeachers] = useState();
 
-  useEffect(()=>{
-
-
+  useEffect(() => {
     async function getData() {
-
-
       get(query(ref(db, `/`), orderByKey(), startAt(`${5}`), limitToFirst(4)))
-  .then((snapshot) => {
-    if (snapshot.exists()) {
-      setTeachers( Object.values(Object.values(snapshot.val())));
-      // a = Object.values(Object.values(snapshot.val()));
-      // console.log(a); // Теперь "a" содержит результат
-    } else {
-      console.log("No data available");
-    }
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            setTeachers(Object.values(Object.values(snapshot.val())));
+            // a = Object.values(Object.values(snapshot.val()));
+            // console.log(a); // Теперь "a" содержит результат
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
       // try {
       //   const snapshot = await get(query(ref(db, `/`), orderByKey(), startAt(`${5}`), limitToFirst(4)));
-        
+
       //   if (snapshot.exists()) {
       //     setArray( Object.values(Object.values(snapshot.val())));
       //     // console.log(a); // "a" содержит результат
@@ -68,33 +70,20 @@ const Teachers = () => {
     }
 
     getData();
+  }, [db]);
 
-
-  }, [db])
-
-
-
-
-
-  
-  
-console.log(teachers);
-
-
+  console.log(teachers);
 
   return (
     <ul className={css.teachersUl}>
-     {teachers && teachers.map((teacher)=>{
-      return (
-        <li key={teachers.indexOf(teacher)}>
-
-        <TeacherCard teacher={teacher}/>
-
-      </li>
-      )
-     
-     })}
-
+      {teachers &&
+        teachers.map((teacher) => {
+          return (
+            <li key={teachers.indexOf(teacher)} className={css.teachersLi}>
+              <TeacherCard teacher={teacher} />
+            </li>
+          );
+        })}
     </ul>
   );
 };

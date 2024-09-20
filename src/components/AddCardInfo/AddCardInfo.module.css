@@ -1,0 +1,57 @@
+.genUl {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.userIcon {
+  height: 44px;
+  width: 44px;
+  background-color: lavender;
+  border-radius: 100px;
+  fill: green;
+}
+
+.iconDiv {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.starIcon {
+  fill: #ffc531;
+  stroke: 1.2px solid #ffc531;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nameP {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+}
+
+.star {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #121417;
+}
+
+.comment {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+}

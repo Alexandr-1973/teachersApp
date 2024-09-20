@@ -10,9 +10,11 @@
   row-gap: 24px; */
   /* width: 1184px; */
   max-width: max(1184px, 91%);
-  overflow: scroll;
+  /* overflow: scroll; */
   flex-wrap: wrap;
   position: relative;
+  /* margin-left: 20px;
+  margin-right: 20px; */
 }
 
 .teacherImg {
@@ -29,6 +31,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  /* margin-left: 10px;
+  margin-right: 10px; */
 }
 
 .languagesDiv {
@@ -99,6 +103,10 @@
   stroke: 1.2px solid #ffc531;
   width: 16px;
   height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
 }
 
 .bookIcon {
@@ -170,12 +178,14 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   color: #121417;
+  cursor: pointer;
 }
 
 .levelsUl {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  /* margin-bottom: 32px; */
 }
 
 .levelLi {

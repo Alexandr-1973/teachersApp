@@ -1,0 +1,14 @@
+.trialBtn {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  color: #121417;
+  border-radius: 12px;
+  padding: 16px 48px;
+  width: 232px;
+  height: 60px;
+  background: #f4c550;
+  border: none;
+  margin-top: 32px;
+}

@@ -1,40 +1,39 @@
 .modal {
-	/* width: 20%; */
-	min-width: 250px;
-	max-width: 565px;
-	height: auto;
-	/* border: 3px solid red; */
-	display: flex;
-	flex-direction: column;
-	padding: 64px;
-	position: relative;
-	background-color:#fff;
-border-radius: 30px;
-margin-left: auto;
-margin-right: auto;
-margin-top: 20px;
-/* opacity: 1; */
+  /* width: 20%; */
+  min-width: 250px;
+  max-width: 565px;
+  height: auto;
+  /* border: 3px solid red; */
+  display: flex;
+  flex-direction: column;
+  padding: 64px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 30px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-top: 20px;
+  /* opacity: 1; */
 }
 
-
 .closeButton {
-	
-	border: none;
-	background-color: inherit;
-	display: flex;
-	justify-content: flex-end;
-	cursor:default;
-margin-top: 20px;
-margin-bottom: 12px;
+  border: none;
+  background-color: inherit;
+  display: flex;
+  justify-content: flex-end;
+  cursor: default;
+  margin-top: 20px;
+  margin-bottom: 12px;
 }
 
 .icon {
-	width: 20px;
-	height: 20px;
-	cursor:pointer;
-	position: absolute;
-	top:20px;
-	right: 20px;
-	/* right: calc(20px - 100%); */
-
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  /* right: calc(20px - 100%); */
 }
