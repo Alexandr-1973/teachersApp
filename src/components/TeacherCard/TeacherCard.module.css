@@ -8,13 +8,15 @@
   gap: 24px;
   /* column-gap: 48px;
   row-gap: 24px; */
-  /* width: 1184px; */
-  max-width: max(1184px, 91%);
+  /* width: 82%; */
+  /* max-width: max(1184px, 91%); */
   /* overflow: scroll; */
   flex-wrap: wrap;
   position: relative;
   /* margin-left: 20px;
   margin-right: 20px; */
+  /* min-width: 250px; */
+  width: 82.2vw;
 }
 
 .teacherImg {
@@ -33,6 +35,10 @@
   flex-wrap: wrap;
   /* margin-left: 10px;
   margin-right: 10px; */
+  /* min-width: 250px; */
+  /* width: 81.8%;
+  min-width: 100px; */
+  width: 67.2vw;
 }
 
 .languagesDiv {
@@ -43,6 +49,7 @@
   /* height: 16px; */
   margin-bottom: 8px;
   flex-wrap: wrap;
+  /* min-width: 250px; */
 }
 
 .highDiv {
@@ -91,8 +98,16 @@
   color: #8a8a89;
   margin: 0;
   padding: 0;
-  margin-right: 190px;
+  margin-right: 13.2vw;
+  /* margin-right: 190px; */
 }
+
+/* @media (min-width: 1440px) {
+  .languageP {
+      margin-right: 190px;
+  }
+} */
+
 
 .lessonInfoLi {
   /* word-break:keep-all; */
@@ -139,7 +154,7 @@
   margin-bottom: 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  column-gap: 8px;
   flex-wrap: wrap;
 }
 
@@ -185,7 +200,10 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  
   /* margin-bottom: 32px; */
+  /* max-width: 70%; */
+  /* width: 40%; */
 }
 
 .levelLi {

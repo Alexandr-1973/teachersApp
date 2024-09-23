@@ -1,5 +1,5 @@
 import { useState } from "react";
-import css from "./TeacherCars.module.css";
+import css from "./TeacherCard.module.css";
 import AddCardInfo from "../AddCardInfo/AddCardInfo";
 import TrialBtn from "../TrialBtn/TrialBtn";
 import { IoMdHeartEmpty } from "react-icons/io";
@@ -23,7 +23,7 @@ const TeacherCard = ({ teacher }) => {
           <p className={css.languageP}>Languages</p>
           <div className={css.highDiv}>
             <p className={css.highPIcon}>
-              <HiOutlineBookOpen className={css.bookIcon}/>
+              <HiOutlineBookOpen className={css.bookIcon} />
               Lessons online
             </p>
             <svg
@@ -45,8 +45,8 @@ const TeacherCard = ({ teacher }) => {
             >
               <path d="M1 0V16" stroke="rgba(18, 20, 23, 0.2)" />
             </svg>
-      <p className={css.highPIcon}>
-              <FaStar className={css.starIcon}/>
+            <p className={css.highPIcon}>
+              <FaStar className={css.starIcon} />
               Rating: {teacher.rating}
             </p>
             <svg
@@ -59,10 +59,11 @@ const TeacherCard = ({ teacher }) => {
               <path d="M1 0V16" stroke="rgba(18, 20, 23, 0.2)" />
             </svg>
             <p className={css.highP}>
-              Price / 1 hour: <span className={css.greenSpan}> {teacher.price_per_hour}$</span>
+              Price / 1 hour:{" "}
+              <span className={css.greenSpan}> {teacher.price_per_hour}$</span>
             </p>
           </div>
-          <IoMdHeartEmpty className={css.heartIcon}/>
+          <IoMdHeartEmpty className={css.heartIcon} />
         </div>
 
         <h2 className={css.teacherName}>
@@ -72,20 +73,27 @@ const TeacherCard = ({ teacher }) => {
         <ul className={css.speaksUl}>
           <li className={css.languageLi}>
             Speaks:
-            <p className={css.languageSpeaksFirstP}>{teacher.languages.join(", ")}</p>
+            <p className={css.languageSpeaksFirstP}>
+              {teacher.languages.join(", ")}
+            </p>
           </li>
 
           <li className={css.languageLi}>
-            Lesson Info: <p className={css.languageSpeaksP}>{teacher.lesson_info}</p>
+            Lesson Info:{" "}
+            <p className={css.languageSpeaksP}>{teacher.lesson_info}</p>
           </li>
 
           <li className={css.languageLi}>
-            Conditions: <p className={css.languageSpeaksP}>{teacher.conditions.join(" ")}</p>
+            Conditions:{" "}
+            <p className={css.languageSpeaksP}>
+              {teacher.conditions.join(" ")}
+            </p>
           </li>
         </ul>
 
         {!openAddInfo && (
-          <p className={css.readMoreButton}
+          <p
+            className={css.readMoreButton}
             onClick={() => {
               setOpenAddInfo(true);
             }}
@@ -94,12 +102,21 @@ const TeacherCard = ({ teacher }) => {
           </p>
         )}
 
-        {openAddInfo && <AddCardInfo reviews={teacher.reviews} />}
+        {openAddInfo && (
+          <AddCardInfo
+            reviews={teacher.reviews}
+            experience={teacher.experience}
+          />
+        )}
 
         <ul className={css.levelsUl}>
           {teacher.levels &&
             teacher.levels.map((level) => {
-              return <li className={css.levelLi} key={teacher.levels.indexOf(level)}>{level}</li>;
+              return (
+                <li className={css.levelLi} key={teacher.levels.indexOf(level)}>
+                  {level}
+                </li>
+              );
             })}
         </ul>
         {openAddInfo && <TrialBtn />}

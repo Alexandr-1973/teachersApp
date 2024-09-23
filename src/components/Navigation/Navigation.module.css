@@ -2,12 +2,15 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding-left: 10%;
-  padding-right: 10%;
+  /* padding-left: 10%;
+  padding-right: 10%; */
   margin-bottom: 20px;
   align-items: center;
   margin-top: 20px;
   row-gap: 16px;
+  width: 82.2vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pages {

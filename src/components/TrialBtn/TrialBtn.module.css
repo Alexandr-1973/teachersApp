@@ -11,4 +11,9 @@
   background: #f4c550;
   border: none;
   margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 0;
+  padding-inline: 0;
 }
