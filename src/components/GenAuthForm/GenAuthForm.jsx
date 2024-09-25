@@ -1,12 +1,16 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import css from "./GenForm.module.css";
+import css from "./GenAuthForm.module.css";
 import { LuEyeOff } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
 import { useState } from "react";
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { initializeApp } from "firebase/app";
 // import { getAuth } from "firebase/auth";
 
@@ -32,20 +36,20 @@ const schemaLogin = yup
   })
   .required();
 
-const GenForm = ({ componentObject }) => {
-
+const GenAuthForm = ({ componentObject }) => {
   const firebaseConfig = {
     apiKey: "AIzaSyAKfUSwVw_sRB4jv_1UdKFU0AaUvUIzzac",
     authDomain: "teachers-app-bc996.firebaseapp.com",
-    databaseURL: "https://teachers-app-bc996-default-rtdb.europe-west1.firebasedatabase.app",
+    databaseURL:
+      "https://teachers-app-bc996-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "teachers-app-bc996",
     storageBucket: "teachers-app-bc996.appspot.com",
     messagingSenderId: "688526414582",
-    appId: "1:688526414582:web:59070d328be963fc3792d7"
+    appId: "1:688526414582:web:59070d328be963fc3792d7",
   };
 
-const app=initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
   const [type, setType] = useState("password");
 
@@ -59,50 +63,46 @@ const app=initializeApp(firebaseConfig);
     ),
   });
   // const onSubmit = (data) => console.log(data);
-  const onSubmit=(data)=>{
+  const onSubmit = (data) => {
     // const app=initializeApp(firebaseConfig);
     // const auth = getAuth(app);
     // const auth = getAuth();
 
     if (componentObject.h === "Registration") {
+      createUserWithEmailAndPassword(auth, data.email, data.password)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
 
-    createUserWithEmailAndPassword(auth, data.email, data.password)
-  .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user;
-    console.log(user);
-    
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
 
-    console.log(errorCode, errorMessage);
-    
-    // ..
-  });
-}
+          console.log(errorCode, errorMessage);
 
-if (componentObject.h === "Log In") {
+          // ..
+        });
+    }
 
-  signInWithEmailAndPassword(auth, data.email, data.password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    console.log(user);
-    
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode, errorMessage);
-    
-  });
-}
+    if (componentObject.h === "Log In") {
+      signInWithEmailAndPassword(auth, data.email, data.password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
 
-  }
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+        });
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
@@ -149,4 +149,4 @@ if (componentObject.h === "Log In") {
   );
 };
 
-export default GenForm;
+export default GenAuthForm;

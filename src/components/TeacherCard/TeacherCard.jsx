@@ -5,6 +5,7 @@ import TrialBtn from "../TrialBtn/TrialBtn";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { HiOutlineBookOpen } from "react-icons/hi2";
 import { FaStar } from "react-icons/fa6";
+import { FaCircle } from "react-icons/fa";
 
 const TeacherCard = ({ teacher }) => {
   const [openAddInfo, setOpenAddInfo] = useState(false);
@@ -13,6 +14,7 @@ const TeacherCard = ({ teacher }) => {
 
   return (
     <div className={css.genDiv}>
+      <FaCircle className={css.circle} />
       <img
         src={teacher.avatar_url}
         alt="Teacher's photo"
@@ -119,7 +121,12 @@ const TeacherCard = ({ teacher }) => {
               );
             })}
         </ul>
-        {openAddInfo && <TrialBtn />}
+        {openAddInfo && (
+          <TrialBtn
+            teacherPhoto={teacher.avatar_url}
+            teacherName={`${teacher.name} ${teacher.surname}`}
+          />
+        )}
       </div>
     </div>
   );

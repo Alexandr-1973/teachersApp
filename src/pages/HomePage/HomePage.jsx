@@ -5,6 +5,7 @@ const HomePage = () => {
   // const adr= "../../images/block-opt.jpg";
   return (
     <div className={css.pageDiv}>
+      <div className={css.decorLeft} />
       <div className={css.genDiv}>
         <div className={css.text}>
           <h1 className={css.h}>
@@ -47,6 +48,7 @@ const HomePage = () => {
           </span>
         </li>
       </ul>
+      <div className={css.decorRight} />
     </div>
   );
 };

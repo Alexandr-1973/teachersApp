@@ -1,12 +1,19 @@
 import Modal from "react-modal";
 import css from "./GenModal.module.css";
-import GenForm from "../GenForm/GenForm";
+import GenAuthForm from "../GenAuthForm/GenAuthForm";
 
 import { IoMdClose } from "react-icons/io";
+import TrialBookForm from "../TrialBookForm/TrialBookForm";
 
 Modal.setAppElement("#root");
 
-const GenModal = ({ isModal, setIsModal, componentObject }) => {
+const GenModal = ({
+  isModal,
+  setIsModal,
+  componentObject,
+  teacherPhoto,
+  teacherName,
+}) => {
   function closeModal() {
     setIsModal(false);
   }
@@ -33,23 +40,16 @@ const GenModal = ({ isModal, setIsModal, componentObject }) => {
           paddingRight: 10,
         },
       }}
-      // contentLabel="Example Modal"
     >
-      {/* <button className={css.closeButton}> */}
       <IoMdClose className={css.icon} onClick={closeModal} />
-      {/* </button> */}
-      <GenForm componentObject={componentObject} />
 
-      {/* <h2 >Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form> */}
+      {componentObject !== "trialBtn" && (
+        <GenAuthForm componentObject={componentObject} />
+      )}
+
+      {componentObject === "trialBtn" && (
+        <TrialBookForm teacherPhoto={teacherPhoto} teacherName={teacherName} />
+      )}
     </Modal>
   );
 };
