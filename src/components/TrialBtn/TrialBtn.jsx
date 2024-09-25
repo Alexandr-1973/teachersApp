@@ -16,6 +16,7 @@ const TrialBtn = ({ teacherPhoto, teacherName }) => {
         componentObject="trialBtn"
         teacherPhoto={teacherPhoto}
         teacherName={teacherName}
+        classModal="modalTrialBook"
       />
     </>
   );

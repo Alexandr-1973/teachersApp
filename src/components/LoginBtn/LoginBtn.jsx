@@ -28,6 +28,7 @@ const LoginBtn = () => {
         isModal={isModal}
         setIsModal={setIsModal}
         componentObject={componentObject}
+        classModal="modalAuth"
       />
       {/* <Modal
         isOpen={isModal}

@@ -13,7 +13,12 @@ const GenModal = ({
   componentObject,
   teacherPhoto,
   teacherName,
+  classModal
 }) => {
+
+console.log(classModal);
+
+
   function closeModal() {
     setIsModal(false);
   }
@@ -27,7 +32,7 @@ const GenModal = ({
       // ariaHideApp={false}
       // onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
-      className={css.modal}
+      className={css[classModal]}
       style={{
         overlay: {
           // position: 'fixed',

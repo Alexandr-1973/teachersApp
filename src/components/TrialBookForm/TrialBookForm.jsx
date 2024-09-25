@@ -3,11 +3,13 @@ import css from "./TrialBookForm.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import "yup-phone";
 
 const schema = yup
   .object({
-    firstName: yup.string().required(),
-    age: yup.number().positive().integer().required(),
+    fullName: yup.string().required(),
+    email: yup.string().email().required(),
+phoneNumber: yup.string().matches(/^\+?[1-9]\d{1,14}$/).required(),
   })
   .required();
 
@@ -29,7 +31,7 @@ const TrialBookForm = ({ teacherPhoto, teacherName }) => {
   const onSubmit = (data) => console.log(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
       <h2 className={css.title}>Book trial lesson</h2>
       <p className={css.description}>
         Our experienced tutor will assess your current language level, discuss
@@ -54,23 +56,28 @@ const TrialBookForm = ({ teacherPhoto, teacherName }) => {
                 type="radio"
                 id={radioBtns.indexOf(radioBtn)}
                 name="engReason"
+                className={css.radioInput}
               />
-              <label htmlFor={radioBtns.indexOf(radioBtn)}>{radioBtn}</label>
+              <label className={css.label} htmlFor={radioBtns.indexOf(radioBtn)}>{radioBtn}</label>
             </li>
           );
         })}
       </ul>
 
-      <input {...register("firstName")} />
-      <p>{errors.firstName?.message}</p>
 
-      <input {...register("age")} />
-      <p>{errors.age?.message}</p>
 
-      <input {...register("age")} />
-      <p>{errors.age?.message}</p>
+      <input {...register("fullName")} placeholder="Full Name" className={css.input}/>
+      <p className={css.errorP}>{errors.fullName?.message}</p>
 
-      <input type="submit" />
+      <input {...register("email")} placeholder="Email" className={css.input}/>
+      <p className={css.errorP}>{errors.email?.message}</p>
+
+      <input {...register("phoneNumber")} placeholder="Phone number" className={css.input}/>
+      <p className={css.errorLastP}>{errors.phoneNumber?.message}</p>
+
+      
+
+      <button type="submit" className={css.submitBtn}>Book</button>
     </form>
   );
 };

@@ -1,9 +1,8 @@
-.modal {
-  /* width: 20%; */
+.modalAuth {
   min-width: 250px;
   max-width: 565px;
   height: auto;
-  /* border: 3px solid red; */
+
   display: flex;
   flex-direction: column;
   padding: 64px;
@@ -15,7 +14,25 @@
   margin-right: auto;
 
   margin-top: 20px;
-  /* opacity: 1; */
+}
+
+.modalTrialBook {
+
+  min-width: 250px;
+  max-width: 600px;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  padding: 64px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 30px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  margin-top: 20px;
 }
 
 .closeButton {
