@@ -4,6 +4,8 @@ import GenAuthForm from "../GenAuthForm/GenAuthForm";
 
 import { IoMdClose } from "react-icons/io";
 import TrialBookForm from "../TrialBookForm/TrialBookForm";
+import { useEffect } from "react";
+import { useState } from "react";
 
 Modal.setAppElement("#root");
 
@@ -13,11 +15,25 @@ const GenModal = ({
   componentObject,
   teacherPhoto,
   teacherName,
-  classModal
+  classModal,
 }) => {
+  const [pageHeight, setPageHeight] = useState(0);
 
-console.log(classModal);
+  useEffect(() => {
+    const updateHeight = () => {
+      const height =
+        document.body.scrollHeight || document.documentElement.scrollHeight;
+      setPageHeight(height);
+    };
 
+    updateHeight();
+
+    window.addEventListener("resize", updateHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateHeight);
+    };
+  }, []);
 
   function closeModal() {
     setIsModal(false);
@@ -26,7 +42,7 @@ console.log(classModal);
   return (
     <Modal
       isOpen={isModal}
-      // overlayClassName={css.overlay}
+      overlayClassName={css.overlay}
       // appElement={document.getElementById("hereIsYourRootElementId")}
       // appElement={document.getElementById('app')}
       // ariaHideApp={false}
@@ -35,7 +51,10 @@ console.log(classModal);
       className={css[classModal]}
       style={{
         overlay: {
-          // position: 'fixed',
+          position: "absolute",
+          // width: "100%",
+          height: `${pageHeight}px`,
+         
           // top: 0,
           // left: 0,
           // right: 0,
@@ -43,6 +62,7 @@ console.log(classModal);
           backgroundColor: "rgba(159, 186, 174, 0.2)",
           paddingLeft: 10,
           paddingRight: 10,
+         
         },
       }}
     >
