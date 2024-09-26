@@ -1,3 +1,13 @@
+.genDiv {
+  background-color: #f8f8f8;
+  padding-bottom: 96px;
+}
+
+
+
+
+
+
 .teachersUl {
   display: flex;
   flex-direction: column;
@@ -12,6 +22,7 @@
   margin-right: 10px; */
   /* padding-left: 10px;
   padding-right: 10px; */
+  margin-bottom: 64px;
 }
 
 .teachersLi {
@@ -26,4 +37,26 @@
   /* max-width: 82.2%; */
   /* width: 85%; */
   /* width: 82.2vw; */
+}
+
+.loadMore {
+  /* margin-bottom: 96px; */
+  border-radius: 12px;
+padding: 16px 48px;
+width: 183px;
+height: 60px;
+background: #f4c550;
+font-family: "Roboto", sans-serif;
+font-weight: 700;
+font-size: 18px;
+line-height: 1.55556;
+color: #121417;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-right: auto;
+margin-left: auto;
+border: none;
+padding-block: 0;
+    padding-inline: 0;
 }

@@ -75,16 +75,19 @@ const Teachers = () => {
   console.log(teachers);
 
   return (
+    <div className={css.genDiv}>
     <ul className={css.teachersUl}>
       {teachers &&
-        teachers.map((teacher) => {
+        teachers.map((teacher, index) => {
           return (
-            <li key={teachers.indexOf(teacher)} className={css.teachersLi}>
-              <TeacherCard teacher={teacher} />
+            <li key={index} className={css.teachersLi}>
+              <TeacherCard teacher={teacher} index={index}/>
             </li>
           );
         })}
     </ul>
+    <button className={css.loadMore}>Load more</button>
+    </div>
   );
 };
 

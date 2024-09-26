@@ -7,7 +7,7 @@ import { HiOutlineBookOpen } from "react-icons/hi2";
 import { FaStar } from "react-icons/fa6";
 import { FaCircle } from "react-icons/fa";
 
-const TeacherCard = ({ teacher }) => {
+const TeacherCard = ({ teacher, index }) => {
   const [openAddInfo, setOpenAddInfo] = useState(false);
 
   console.log(teacher);
@@ -125,6 +125,7 @@ const TeacherCard = ({ teacher }) => {
           <TrialBtn
             teacherPhoto={teacher.avatar_url}
             teacherName={`${teacher.name} ${teacher.surname}`}
+            index={index}
           />
         )}
       </div>

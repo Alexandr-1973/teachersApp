@@ -2,7 +2,7 @@ import { useState } from "react";
 import GenModal from "../GenModal/GenModal";
 import css from "./TrialBtn.module.css";
 
-const TrialBtn = ({ teacherPhoto, teacherName }) => {
+const TrialBtn = ({ teacherPhoto, teacherName, index }) => {
   const [isModal, setIsModal] = useState(false);
 
   return (
@@ -17,6 +17,7 @@ const TrialBtn = ({ teacherPhoto, teacherName }) => {
         teacherPhoto={teacherPhoto}
         teacherName={teacherName}
         classModal="modalTrialBook"
+        index={index}
       />
     </>
   );

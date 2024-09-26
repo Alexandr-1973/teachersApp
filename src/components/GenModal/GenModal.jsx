@@ -1,11 +1,9 @@
 import Modal from "react-modal";
 import css from "./GenModal.module.css";
 import GenAuthForm from "../GenAuthForm/GenAuthForm";
-
 import { IoMdClose } from "react-icons/io";
 import TrialBookForm from "../TrialBookForm/TrialBookForm";
-import { useEffect } from "react";
-import { useState } from "react";
+
 
 Modal.setAppElement("#root");
 
@@ -16,24 +14,9 @@ const GenModal = ({
   teacherPhoto,
   teacherName,
   classModal,
+  index,
 }) => {
-  const [pageHeight, setPageHeight] = useState(0);
-
-  useEffect(() => {
-    const updateHeight = () => {
-      const height =
-        document.body.scrollHeight || document.documentElement.scrollHeight;
-      setPageHeight(height);
-    };
-
-    updateHeight();
-
-    window.addEventListener("resize", updateHeight);
-
-    return () => {
-      window.removeEventListener("resize", updateHeight);
-    };
-  }, []);
+ 
 
   function closeModal() {
     setIsModal(false);
@@ -41,6 +24,7 @@ const GenModal = ({
 
   return (
     <Modal
+      
       isOpen={isModal}
       overlayClassName={css.overlay}
       // appElement={document.getElementById("hereIsYourRootElementId")}
@@ -51,10 +35,12 @@ const GenModal = ({
       className={css[classModal]}
       style={{
         overlay: {
-          position: "absolute",
+          position: `${classModal === "modalTrialBook" ? "absolute" : "fixed"}`,
           // width: "100%",
-          height: `${pageHeight}px`,
-         
+          height: `${document.documentElement.scrollHeight}px`,
+
+          // height: `${window.scrollY}px`,
+
           // top: 0,
           // left: 0,
           // right: 0,
@@ -62,7 +48,10 @@ const GenModal = ({
           backgroundColor: "rgba(159, 186, 174, 0.2)",
           paddingLeft: 10,
           paddingRight: 10,
-         
+        },
+
+        content: {
+          top:index ===3? `${window.scrollY-200}px`: `${window.scrollY}px`,
         },
       }}
     >
@@ -73,8 +62,9 @@ const GenModal = ({
       )}
 
       {componentObject === "trialBtn" && (
-        <TrialBookForm teacherPhoto={teacherPhoto} teacherName={teacherName} />
+        <TrialBookForm teacherPhoto={teacherPhoto} teacherName={teacherName}/>
       )}
+      
     </Modal>
   );
 };

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+
 const schema = yup
   .object({
     engReason: yup.string().required("Сhoose one, please"),
@@ -12,7 +13,7 @@ const schema = yup
   })
   .required();
 
-const TrialBookForm = ({ teacherPhoto, teacherName }) => {
+const TrialBookForm = ({ teacherPhoto, teacherName}) => {
   const radioBtns = [
     "Lesson for kids",
     "Living abroad",
@@ -34,7 +35,7 @@ const TrialBookForm = ({ teacherPhoto, teacherName }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
+    <form onSubmit={handleSubmit(onSubmit)} className={css.form} >
       <h2 className={css.title}>Book trial lesson</h2>
       <p className={css.description}>
         Our experienced tutor will assess your current language level, discuss
