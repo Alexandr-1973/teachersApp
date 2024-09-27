@@ -1,5 +1,5 @@
 import { useState } from "react";
-import sprite from "../../images/sprite.svg";
+import sprite from "/images/sprite.svg";
 import css from "./LoginBtn.module.css";
 // import Modal from "react-modal";
 import GenModal from "../GenModal/GenModal";

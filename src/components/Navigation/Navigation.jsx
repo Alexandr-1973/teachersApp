@@ -1,5 +1,5 @@
 import css from "./Navigation.module.css";
-import sprite from "../../images/sprite.svg";
+import sprite from "/images/sprite.svg";
 import { Link, NavLink } from "react-router-dom";
 import LoginBtn from "../LoginBtn/LoginBtn";
 import RegistrationBtn from "../RegistrationBtn/RegistrationBtn";
@@ -9,13 +9,13 @@ import { useSelector } from "react-redux";
 
 const Navigation = () => {
   const isLogin = useSelector(selectIsLoggedIn);
-  const icon = `${sprite}#icon-ukraine`;
+  
   return (
     <nav className={css.nav}>
       {/* <div className={css.logoDiv}> */}
       <Link className={css.logoDiv} to="/">
         <svg width="28px" height="28px">
-          <use href={icon}></use>
+          <use href={`${sprite}#icon-ukraine`}></use>
         </svg>
         {/* <p className={css.logo}>LearnLingo</p> */}
         LearnLingo
