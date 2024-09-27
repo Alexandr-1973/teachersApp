@@ -1,5 +1,5 @@
 import css from "./Navigation.module.css";
-import sprite from "./../images/symbol-defs.svg";
+import sprite from "../../images/sprite.svg";
 import { Link, NavLink } from "react-router-dom";
 import LoginBtn from "../LoginBtn/LoginBtn";
 import RegistrationBtn from "../RegistrationBtn/RegistrationBtn";
