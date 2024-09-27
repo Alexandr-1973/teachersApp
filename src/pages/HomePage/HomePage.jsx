@@ -1,4 +1,4 @@
-import image from "../../images/block-opt.jpg";
+import image from "/images/block-opt.jpg";
 import css from "./HomePages.module.css";
 import { useNavigate } from "react-router-dom";
 
