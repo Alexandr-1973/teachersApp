@@ -5,14 +5,12 @@ import css from "./GenAuthForm.module.css";
 import { LuEyeOff } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
 import { useState } from "react";
-
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { initializeApp } from "firebase/app";
-// import { getAuth } from "firebase/auth";
+  registerUser,
+  logInUser,
+} from "../../redux/auth/authOperations";
+import { setIsLogin } from "../../redux/auth/authSlice";
+import { useDispatch } from "react-redux";
 
 const schemaRegistration = yup
   .object({
@@ -27,7 +25,6 @@ const schemaRegistration = yup
 
 const schemaLogin = yup
   .object({
-    // name: yup.string(),
     email: yup.string().email("must be a valid email").required(),
     password: yup
       .string()
@@ -37,71 +34,47 @@ const schemaLogin = yup
   .required();
 
 const GenAuthForm = ({ componentObject }) => {
-  const firebaseConfig = {
-    apiKey: "AIzaSyAKfUSwVw_sRB4jv_1UdKFU0AaUvUIzzac",
-    authDomain: "teachers-app-bc996.firebaseapp.com",
-    databaseURL:
-      "https://teachers-app-bc996-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "teachers-app-bc996",
-    storageBucket: "teachers-app-bc996.appspot.com",
-    messagingSenderId: "688526414582",
-    appId: "1:688526414582:web:59070d328be963fc3792d7",
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+  const dispatch = useDispatch();
 
   const [type, setType] = useState("password");
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(
       componentObject.h === "Registration" ? schemaRegistration : schemaLogin
     ),
   });
-  // const onSubmit = (data) => console.log(data);
-  const onSubmit = (data) => {
-    // const app=initializeApp(firebaseConfig);
-    // const auth = getAuth(app);
-    // const auth = getAuth();
 
+  const onSubmit = async (data) => {
     if (componentObject.h === "Registration") {
-      createUserWithEmailAndPassword(auth, data.email, data.password)
-        .then((userCredential) => {
-          // Signed up
-          const user = userCredential.user;
-          console.log(user);
-
-          // ...
+      const user = await registerUser(data.name, data.email, data.password);
+      dispatch(
+        setIsLogin({
+          displayName: user.displayName,
+          email: user.email,
+          accessToken: user.accessToken,
         })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
+      );
 
-          console.log(errorCode, errorMessage);
-
-          // ..
-        });
+      console.log(user);
     }
 
     if (componentObject.h === "Log In") {
-      signInWithEmailAndPassword(auth, data.email, data.password)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          console.log(user);
-
-          // ...
+      const user = await logInUser(data.email, data.password);
+      dispatch(
+        setIsLogin({
+          displayName: user.displayName,
+          email: user.email,
+          accessToken: user.accessToken,
         })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode, errorMessage);
-        });
+      );
+      console.log(user);
     }
+    reset();
   };
 
   return (

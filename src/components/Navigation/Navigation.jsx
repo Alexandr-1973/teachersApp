@@ -3,8 +3,12 @@ import sprite from "../../images/symbol-defs.svg";
 import { Link, NavLink } from "react-router-dom";
 import LoginBtn from "../LoginBtn/LoginBtn";
 import RegistrationBtn from "../RegistrationBtn/RegistrationBtn";
+import LogOutBtn from "../LogOutBtn/LogOutBtn";
+import { selectIsLoggedIn } from "../../redux/auth/authSlice";
+import { useSelector } from "react-redux";
 
 const Navigation = () => {
+  const isLogin = useSelector(selectIsLoggedIn);
   return (
     <nav className={css.nav}>
       {/* <div className={css.logoDiv}> */}
@@ -35,20 +39,20 @@ const Navigation = () => {
         </li>
       </ul>
       <ul className={css.login}>
-        <li>
+        { !isLogin && <li>
 
           <LoginBtn />
-          {/* <button className={css.logButton}>
-            <svg width="20px" height="20px">
-              <use href={`${sprite}#icon-log-in-01`}></use>
-            </svg>
-            Log in
-          </button> */}
-        </li>
-        <li>
+        
+        </li>}
+        {!isLogin && <li>
           <RegistrationBtn />
-          {/* <button className={css.registrationButton}>Registration</button> */}
-        </li>
+          
+        </li>}
+
+
+        {isLogin && <li>
+<LogOutBtn />
+        </li>}
       </ul>
     </nav>
   );
