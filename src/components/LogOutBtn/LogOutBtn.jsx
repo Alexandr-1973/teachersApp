@@ -18,7 +18,7 @@ const LogOutBtn = () => {
       className={css.logoutBtn}
       onClick={()=>handleClick()}
     >
-      Log Out
+      LogOut
     </button>
   );
 };

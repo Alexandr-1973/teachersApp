@@ -1,13 +1,25 @@
 .logoutBtn {
+	padding-block: 0;
+    padding-inline: 0;
 	border-radius: 12px;
-	padding: 14px 39px;
-	width: 166px;
+	padding-left: 14px;
+	padding-bottom: 39px;
+	padding-top: 39px;
+	
+	width: 17.7vw;
 	height: 48px;
-	background-color: #121417;
+	background-color: inherit;
+	/* background-color:  #9fbaae; */
 	font-family: "Roboto", sans-serif;
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 1.25;
-	color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #121417;
 	border: none;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+align-items: center;
+	
+
 }

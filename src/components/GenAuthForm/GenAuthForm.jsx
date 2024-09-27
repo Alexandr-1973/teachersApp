@@ -18,7 +18,7 @@ const schemaRegistration = yup
     email: yup.string().email("must be a valid email").required(),
     password: yup
       .string()
-      .min(3, "must be at least 3 characters long")
+      .min(6, "must be at least 6 characters long")
       .required(),
   })
   .required();
@@ -28,7 +28,7 @@ const schemaLogin = yup
     email: yup.string().email("must be a valid email").required(),
     password: yup
       .string()
-      .min(3, "must be at least 3 characters long")
+      .min(6, "must be at least 6 characters long")
       .required(),
   })
   .required();
