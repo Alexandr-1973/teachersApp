@@ -6,6 +6,7 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { HiOutlineBookOpen } from "react-icons/hi2";
 import { FaStar } from "react-icons/fa6";
 import { FaCircle } from "react-icons/fa";
+import { PiLineVertical } from "react-icons/pi";
 
 const TeacherCard = ({ teacher, index }) => {
   const [openAddInfo, setOpenAddInfo] = useState(false);
@@ -28,38 +29,18 @@ const TeacherCard = ({ teacher, index }) => {
               <HiOutlineBookOpen className={css.bookIcon} />
               Lessons online
             </p>
-            <svg
-              width="2"
-              height="16"
-              viewBox="0 0 2 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M1 0V16" stroke="rgba(18, 20, 23, 0.2)" />
-            </svg>
+            <PiLineVertical className={css.vertIcon}/>
+            
+
             <p className={css.highP}>Lessons done: {teacher.lessons_done}</p>
-            <svg
-              width="2"
-              height="16"
-              viewBox="0 0 2 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M1 0V16" stroke="rgba(18, 20, 23, 0.2)" />
-            </svg>
+            <PiLineVertical className={css.vertIcon}/>
+            
             <p className={css.highPIcon}>
               <FaStar className={css.starIcon} />
               Rating: {teacher.rating}
             </p>
-            <svg
-              width="2"
-              height="16"
-              viewBox="0 0 2 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M1 0V16" stroke="rgba(18, 20, 23, 0.2)" />
-            </svg>
+            <PiLineVertical className={css.vertIcon}/>
+            
             <p className={css.highP}>
               Price / 1 hour:{" "}
               <span className={css.greenSpan}> {teacher.price_per_hour}$</span>

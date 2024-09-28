@@ -2,6 +2,8 @@ import css from "./LogOutBtn.module.css";
 import { setLogOut } from "../../redux/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/auth/authOperations";
+import { FiLogOut } from "react-icons/fi";
+
 
 
 const LogOutBtn = () => {
@@ -19,6 +21,7 @@ const LogOutBtn = () => {
       onClick={()=>handleClick()}
     >
       LogOut
+      <FiLogOut className={css.logoutIcon}/>
     </button>
   );
 };

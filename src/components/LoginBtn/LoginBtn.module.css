@@ -10,3 +10,10 @@
 	gap: 8px;
 	background-color: inherit;
   }
+
+  .loginIcon {
+	width: 20px;
+	height: 20px;
+	stroke: #9FBAAE;
+	stroke-width: 2px;
+  }

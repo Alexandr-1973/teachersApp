@@ -111,7 +111,7 @@
   color: #8a8a89;
   margin: 0;
   padding: 0;
-  margin-right: 13.2vw;
+  margin-right: 12vw;
   /* margin-right: 190px; */
 }
 
@@ -239,3 +239,10 @@
   background-color: #f4c550;
   border: none;
 }
+
+.vertIcon {
+  height: 16px;
+  stroke-width: 2px;
+  
+  fill: rgba(18, 20, 23, 0.2);;
+} 
