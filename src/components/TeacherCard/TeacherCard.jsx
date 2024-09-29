@@ -7,24 +7,18 @@ import { HiOutlineBookOpen } from "react-icons/hi2";
 import { FaStar } from "react-icons/fa6";
 import { FaCircle } from "react-icons/fa";
 import { PiLineVertical } from "react-icons/pi";
-import {selectFavorite} from "../../redux/favorite/favoriteSlice.js";
+import { selectFavorite } from "../../redux/favorite/favoriteSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { clickFavorite } from "../../redux/favorite/favoriteSlice.js";
 
 const TeacherCard = ({ teacher, index }) => {
-
   const favoriteTeachers = useSelector(selectFavorite);
 
-  console.log(favoriteTeachers);
-  console.log(clickFavorite);
-  console.log(teacher);
-  
-  
-  
   const dispatch = useDispatch();
   const [openAddInfo, setOpenAddInfo] = useState(false);
   const [classIcon, setClassIcon] = useState(() => {
-    if (favoriteTeachers &&
+    if (
+      favoriteTeachers &&
       favoriteTeachers.some((item) => item.avatar_url === teacher.avatar_url)
     ) {
       return "red";
@@ -33,10 +27,8 @@ const TeacherCard = ({ teacher, index }) => {
     }
   });
 
-  console.log(teacher);
-
   const handleClick = () => {
-    classIcon==="white"?setClassIcon("red"):setClassIcon("white");
+    classIcon === "white" ? setClassIcon("red") : setClassIcon("white");
     dispatch(clickFavorite(teacher));
   };
 
@@ -72,7 +64,7 @@ const TeacherCard = ({ teacher, index }) => {
               <span className={css.greenSpan}> {teacher.price_per_hour}$</span>
             </p>
           </div>
-          <FiHeart className={css[classIcon]} onClick={()=>handleClick()} />
+          <FiHeart className={css[classIcon]} onClick={() => handleClick()} />
         </div>
 
         <h2 className={css.teacherName}>
