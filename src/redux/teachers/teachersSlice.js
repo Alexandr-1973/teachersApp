@@ -1,31 +1,22 @@
-import { createSlice, createSelector } from "@reduxjs/toolkit";
-import { fetchTeachers } from "./teachersOperations";
+import { createSlice } from "@reduxjs/toolkit";
+
 
 const initialState = {
   items: [],
-  loading: false,
-  error: null,
+  // loading: false,
+  // error: null,
 };
 
 const teachersSlice = createSlice({
   name: "items",
   initialState: initialState,
-  extraReducers: (builder) => {
-    builder;
-
-    //   .addCase(fetchTeachers.pending, (state) => {
-    //     state.loading = true;
-    //   })
-    //   .addCase(fetchTeachers.fulfilled, (state, action) => {
-    //     state.loading = false;
-    //     state.error = null;
-    //     state.items = action.payload;
-    //   })
-    //   .addCase(fetchTeachers.rejected, (state, action) => {
-    //     state.loading = false;
-    //     state.error = action.payload;
-    //   });
+  reducers: {
+    setTeachers: (state, action) => {
+      state.items = action.payload;
+    },
   },
 });
 
 export const teachersReducer = teachersSlice.reducer;
+export const { setTeachers } = teachersSlice.actions;
+export const selectTeachers = (state) => state.teachers.items;

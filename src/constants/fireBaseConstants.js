@@ -1,6 +1,20 @@
 import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
+import firebase from "firebase/compat/app";
+import {
+  getDatabase,
+  ref,
+  child,
+  get,
+  query,
+  startAt,
+  endAt,
+  limitToLast,
+  limitToFirst,
+  orderByKey,
+} from "firebase/database";
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -13,3 +27,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const db = getDatabase();
+
+
+

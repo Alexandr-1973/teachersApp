@@ -3,6 +3,8 @@ import css from "./GenModal.module.css";
 import GenAuthForm from "../GenAuthForm/GenAuthForm";
 import { IoMdClose } from "react-icons/io";
 import TrialBookForm from "../TrialBookForm/TrialBookForm";
+import { selectTeachers } from "../../redux/teachers/teachersSlice";
+import { useSelector } from "react-redux";
 
 
 Modal.setAppElement("#root");
@@ -17,6 +19,9 @@ const GenModal = ({
   index,
 }) => {
  
+ 
+  
+  
 
   function closeModal() {
     setIsModal(false);
@@ -51,7 +56,7 @@ const GenModal = ({
         },
 
         content: {
-          top:index ===3? `${window.scrollY-200}px`: `${window.scrollY}px`,
+          top:index ===useSelector(selectTeachers).length-1? `${window.scrollY-200}px`: `${window.scrollY}px`,
         },
       }}
     >

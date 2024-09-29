@@ -2,16 +2,43 @@ import { useState } from "react";
 import css from "./TeacherCard.module.css";
 import AddCardInfo from "../AddCardInfo/AddCardInfo";
 import TrialBtn from "../TrialBtn/TrialBtn";
-import { IoMdHeartEmpty } from "react-icons/io";
+import { FiHeart } from "react-icons/fi";
 import { HiOutlineBookOpen } from "react-icons/hi2";
 import { FaStar } from "react-icons/fa6";
 import { FaCircle } from "react-icons/fa";
 import { PiLineVertical } from "react-icons/pi";
+import {selectFavorite} from "../../redux/favorite/favoriteSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import { clickFavorite } from "../../redux/favorite/favoriteSlice.js";
 
 const TeacherCard = ({ teacher, index }) => {
+
+  const favoriteTeachers = useSelector(selectFavorite);
+
+  console.log(favoriteTeachers);
+  console.log(clickFavorite);
+  console.log(teacher);
+  
+  
+  
+  const dispatch = useDispatch();
   const [openAddInfo, setOpenAddInfo] = useState(false);
+  const [classIcon, setClassIcon] = useState(() => {
+    if (favoriteTeachers &&
+      favoriteTeachers.some((item) => item.avatar_url === teacher.avatar_url)
+    ) {
+      return "red";
+    } else {
+      return "white";
+    }
+  });
 
   console.log(teacher);
+
+  const handleClick = () => {
+    classIcon==="white"?setClassIcon("red"):setClassIcon("white");
+    dispatch(clickFavorite(teacher));
+  };
 
   return (
     <div className={css.genDiv}>
@@ -29,24 +56,23 @@ const TeacherCard = ({ teacher, index }) => {
               <HiOutlineBookOpen className={css.bookIcon} />
               Lessons online
             </p>
-            <PiLineVertical className={css.vertIcon}/>
-            
+            <PiLineVertical className={css.vertIcon} />
 
             <p className={css.highP}>Lessons done: {teacher.lessons_done}</p>
-            <PiLineVertical className={css.vertIcon}/>
-            
+            <PiLineVertical className={css.vertIcon} />
+
             <p className={css.highPIcon}>
               <FaStar className={css.starIcon} />
               Rating: {teacher.rating}
             </p>
-            <PiLineVertical className={css.vertIcon}/>
-            
+            <PiLineVertical className={css.vertIcon} />
+
             <p className={css.highP}>
               Price / 1 hour:{" "}
               <span className={css.greenSpan}> {teacher.price_per_hour}$</span>
             </p>
           </div>
-          <IoMdHeartEmpty className={css.heartIcon} />
+          <FiHeart className={css[classIcon]} onClick={()=>handleClick()} />
         </div>
 
         <h2 className={css.teacherName}>

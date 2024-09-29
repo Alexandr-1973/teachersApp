@@ -1,92 +1,52 @@
 import axios from "axios";
-// import { useEffect } from "react";
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import firebase from "firebase/compat/app";
-import {
-  getDatabase,
-  ref,
-  child,
-  get,
-  query,
-  startAt,
-  endAt,
-  limitToLast,
-  limitToFirst,
-  orderByKey,
-} from "firebase/database";
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
 import { useEffect, useState } from "react";
 import css from "./Teachers.module.css";
+import { getTeachers } from "../../redux/teachers/teachersOperations";
+import {
+  setTeachers,
+  selectTeachers,
+} from "../../redux/teachers/teachersSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Teachers = () => {
-  const firebaseConfig = {
-    apiKey: "AIzaSyAKfUSwVw_sRB4jv_1UdKFU0AaUvUIzzac",
-    authDomain: "teachers-app-bc996.firebaseapp.com",
-    databaseURL:
-      "https://teachers-app-bc996-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "teachers-app-bc996",
-    storageBucket: "teachers-app-bc996.appspot.com",
-    messagingSenderId: "688526414582",
-    appId: "1:688526414582:web:59070d328be963fc3792d7",
-  };
 
-  // Initialize Firebase
-  initializeApp(firebaseConfig);
-
-  const db = getDatabase();
-
-  const [teachers, setTeachers] = useState();
+  const [startNumber, setStartNumber]=useState(0)
+  const [isLoadMore, setIsLoadMore] = useState(true)
+  const dispatch = useDispatch();
+  const teachers = useSelector(selectTeachers);
 
   useEffect(() => {
-    async function getData() {
-      get(query(ref(db, `/`), orderByKey(), startAt(`${5}`), limitToFirst(4)))
-        .then((snapshot) => {
-          if (snapshot.exists()) {
-            setTeachers(Object.values(Object.values(snapshot.val())));
-            // a = Object.values(Object.values(snapshot.val()));
-            // console.log(a); // Теперь "a" содержит результат
-          } else {
-            console.log("No data available");
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-      // try {
-      //   const snapshot = await get(query(ref(db, `/`), orderByKey(), startAt(`${5}`), limitToFirst(4)));
+    const getTeachersDb = async () => {
+      const teachersArray = await getTeachers(startNumber);
+      if (teachersArray.length>0){
+      dispatch(setTeachers(teachersArray));
+      }
+      if (teachersArray.length<4){
+        setIsLoadMore(false);
+      };
+      console.log(teachersArray);
+    };
+    getTeachersDb();
+  }, [dispatch, startNumber]);
 
-      //   if (snapshot.exists()) {
-      //     setArray( Object.values(Object.values(snapshot.val())));
-      //     // console.log(a); // "a" содержит результат
-      //     // return a; // Можно также вернуть результат из функции
-      //   } else {
-      //     console.log("No data available");
-      //   }
-      // } catch (error) {
-      //   console.error(error);
-      // }
-    }
-
-    getData();
-  }, [db]);
-
-  console.log(teachers);
+  console.log(teachers.length);
+  
 
   return (
     <div className={css.genDiv}>
-    <ul className={css.teachersUl}>
-      {teachers &&
-        teachers.map((teacher, index) => {
-          return (
-            <li key={index} className={css.teachersLi}>
-              <TeacherCard teacher={teacher} index={index}/>
-            </li>
-          );
-        })}
-    </ul>
-    <button className={css.loadMore}>Load more</button>
+      <ul className={css.teachersUl}>
+        {teachers &&
+          teachers.map((teacher, index) => {
+            return (
+              <li key={index} className={css.teachersLi}>
+                <TeacherCard teacher={teacher} index={index} />
+              </li>
+            );
+          })}
+      </ul>
+      {isLoadMore && <button className={css.loadMore} onClick={()=>{setStartNumber(startNumber+4)}}>Load more</button>}
     </div>
   );
 };
