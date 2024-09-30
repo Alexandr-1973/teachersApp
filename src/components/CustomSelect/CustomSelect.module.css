@@ -1,0 +1,77 @@
+.customSelect {
+  position: relative;
+}
+
+.selectLabel {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 14px;
+  padding: 14px 18px 14px 18px;
+  height: 48px;
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11111;
+  color: #121417;
+}
+
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: none;
+  background-color: #fff;
+  z-index: 1000;
+  margin-top: 4px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.option {
+  padding-left: 18px;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11111;
+  color: rgba(18, 20, 23, 0.2);
+}
+
+.title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: #8a8a89;
+  margin-bottom: 8px;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  stroke: #121417;
+}
+
+.selectedOption {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11111;
+  color: #121417;
+  padding-left: 18px;
+}
+.dollar {
+  right: 14px;
+  height: 18px;
+  stroke: #121417;
+  fill: #121417;
+}

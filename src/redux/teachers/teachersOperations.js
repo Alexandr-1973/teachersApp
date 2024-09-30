@@ -37,6 +37,61 @@ export const getTeachers = async (startNumber) => {
 
 
 
+
+
+
+
+
+//   export const getTeachers = async (startNumber, filters) => {
+// 	try {
+// 	  const { language, level, maxPrice } = filters; // фильтры
+// 	  const refQuery = query(
+// 		ref(db, `/`),
+// 		orderByChild('price_per_hour'),
+// 		startAt(startNumber),
+// 		endAt(maxPrice),
+// 		limitToFirst(4)
+// 	  );
+	
+// 	  const snapshot = await get(refQuery);
+	
+// 	  if (snapshot.exists()) {
+// 		const teachersArray = Object.values(snapshot.val()).filter(teacher => 
+// 		  teacher.languages.includes(language) && 
+// 		  teacher.levels.includes(level)
+// 		);
+// 		return teachersArray;
+// 	  } else {
+// 		console.log("No data available");
+// 		return [];
+// 	  }
+// 	} catch (error) {
+// 	  console.log(error);
+// 	  return [];
+// 	}
+//   };
+  
+
+// const queryByLanguage = query(
+// 	ref(db, `/`),
+// 	orderByChild('languages'),
+// 	equalTo('English')
+//   );
+
+
+// const queryByLevel = query(
+// 	ref(db, `/`),
+// 	orderByChild('levels'),
+// 	equalTo('A1 Beginner')
+//   );
+
+// const queryByPrice = query(
+// 	ref(db, `/`),
+// 	orderByChild('price_per_hour'),
+// 	equalTo(25)
+//   );
+
+
 //   export const getFilterTeachers = async ({ languages, levels, priceRange, startAtKey = '5', limit = 4 } = {}) => {
 // 	try {
 // 	  // Базовый запрос

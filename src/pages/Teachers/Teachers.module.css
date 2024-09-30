@@ -1,6 +1,7 @@
 .genDiv {
   background-color: #f8f8f8;
   padding-bottom: 96px;
+  margin-top: 32px;
 }
 
 .loadMore {
@@ -24,3 +25,80 @@
   padding-block: 0;
   padding-inline: 0;
 }
+
+.ul {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-left: 8.75vw;
+  margin-bottom: 20px;
+  /* margin-left: 100px; */
+}
+
+.label {
+ 
+position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: "Roboto", sans-serif;
+font-weight: 500;
+font-size: 14px;
+line-height: 1.28571;
+color: #8a8a89;
+}
+
+.select {
+
+  appearance:none;
+
+  font-family: "Roboto", sans-serif;
+font-weight: 500;
+font-size: 18px;
+line-height: 1.11111;
+color: #121417;
+border-radius: 14px;
+padding-top: 14px;
+padding-bottom:  14px;
+padding-right: 34px;
+ padding-left: 18px;
+/* width: 221px; */
+height: 48px;
+background: #fff;
+border:none;
+}
+
+.option {
+  /* appearance:; */
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .arrow {
+  position: absolute;
+  top: 40px;
+  right: 14px;
+  width: 20px;
+  height: 20px;
+  fill:#121417;
+} */
+
+/* .transprent {
+  background-color: red;
+  position: absolute;
+  top: 40px;
+  right: 14px;
+  width: 20px;
+  height: 20px;
+  z-index: -1;
+} */
+ .dollar {
+  position: absolute;
+  top: 40px;
+  right: 14px;
+  height: 18px;
+  stroke: #121417;
+  fill: #121417;
+ }

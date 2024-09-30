@@ -37,15 +37,15 @@ const GenModal = ({
       // onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
       className={css[classModal]}
-      closeTimeoutMS={500}
+      // closeTimeoutMS={500}
       style={{
         overlay: {
           position: `${classModal === "modalTrialBook" ? "absolute" : "fixed"}`,
           // width: "100%",
           height: `${document.documentElement.scrollHeight+500}px`,
           
-          transition: 'opacity 0.5s ease-in-out', // Анимация плавного исчезновения оверлея
-            opacity: isModal ? 1 : 0, 
+          // transition: 'opacity 0.5s ease-in-out', 
+          //   opacity: isModal ? 1 : 0, 
           // `${document.documentElement.scrollHeight}px`,
 
           // height: `${window.scrollY}px`,
@@ -65,8 +65,8 @@ const GenModal = ({
 
         content: {
           top: `${window.scrollY}px`,
-          transition: 'opacity 0.5s ease-in-out', // Анимация плавного исчезновения
-            opacity: isModal ? 1 : 0, 
+          // transition: 'opacity 0.5s ease-in-out', 
+          //   opacity: isModal ? 1 : 0, 
             // index === useSelector(selectTeachers).length - 1
             //   ? `${window.scrollY}px`
             //   : `${window.scrollY}px`,
