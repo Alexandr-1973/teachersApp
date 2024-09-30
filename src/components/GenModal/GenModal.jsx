@@ -80,7 +80,7 @@ const GenModal = ({
       )}
 
       {componentObject === "trialBtn" && (
-        <TrialBookForm teacherPhoto={teacherPhoto} teacherName={teacherName} />
+        <TrialBookForm teacherPhoto={teacherPhoto} teacherName={teacherName} closeModal={closeModal}/>
       )}
     </Modal>
   );

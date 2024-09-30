@@ -13,7 +13,7 @@ const schema = yup
   })
   .required();
 
-const TrialBookForm = ({ teacherPhoto, teacherName}) => {
+const TrialBookForm = ({ teacherPhoto, teacherName, closeModal}) => {
   const radioBtns = [
     "Lesson for kids",
     "Living abroad",
@@ -32,6 +32,7 @@ const TrialBookForm = ({ teacherPhoto, teacherName}) => {
   const onSubmit = (data) => {
     console.log(data)
     reset();
+    closeModal();
   };
 
   return (
