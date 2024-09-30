@@ -5,12 +5,12 @@ import css from "./GenAuthForm.module.css";
 import { LuEyeOff } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
 import { useState } from "react";
-import {
-  registerUser,
-  logInUser,
-} from "../../redux/auth/authOperations";
+import { registerUser, logInUser } from "../../redux/auth/authOperations";
 import { setIsLogin } from "../../redux/auth/authSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const schemaRegistration = yup
   .object({
@@ -33,7 +33,15 @@ const schemaLogin = yup
   })
   .required();
 
-const GenAuthForm = ({ componentObject }) => {
+const GenAuthForm = ({ componentObject, closeModal }) => {
+
+  const notify = (message) => toast(message,{
+    style: {color:"red"},
+    duration: 5000,
+  });
+
+  const navigate=useNavigate();
+  
   const dispatch = useDispatch();
 
   const [type, setType] = useState("password");
@@ -49,32 +57,79 @@ const GenAuthForm = ({ componentObject }) => {
     ),
   });
 
+
+  // if (typeof("lola")==="string"){
+  //   console.log("kuku");
+    
+  // }
+  
+
   const onSubmit = async (data) => {
     if (componentObject.h === "Registration") {
-      const user = await registerUser(data.name, data.email, data.password);
+      const res = await registerUser(data.name, data.email, data.password);
+
+      if (typeof(res)==="string") {
+
+        if (res==="Firebase: Error (auth/email-already-in-use)."){
+          notify("Your email already in used. Please click Log in button.");
+        }
+        else{
+          notify(res);
+        }
+        setTimeout(() => {
+          closeModal();
+        }, "5000");
+
+         console.log(res);
+// closeModal();
+         return;
+      }
+
       dispatch(
         setIsLogin({
-          displayName: user.displayName,
-          email: user.email,
-          accessToken: user.accessToken,
+          displayName: res.displayName,
+          email: res.email,
+          accessToken: res.accessToken,
         })
       );
 
-      console.log(user);
+      console.log(res);
     }
 
     if (componentObject.h === "Log In") {
-      const user = await logInUser(data.email, data.password);
+      const res = await logInUser(data.email, data.password);
+
+      if (typeof(res)==="string") {
+
+        if (res==="Firebase: Error (auth/invalid-credential)."){
+          notify("Sorry, invalid credential.");
+        }
+        else{
+          notify(res);
+        }
+        setTimeout(() => {
+          closeModal();
+        }, "5000");
+
+         console.log(res);
+// closeModal();
+         return;
+      }
+
+
+
       dispatch(
         setIsLogin({
-          displayName: user.displayName,
-          email: user.email,
-          accessToken: user.accessToken,
+          displayName: res.displayName,
+          email: res.email,
+          accessToken: res.accessToken,
         })
       );
-      console.log(user);
+      console.log(res);
     }
+    navigate("/teachers");
     reset();
+    
   };
 
   return (
@@ -118,6 +173,8 @@ const GenAuthForm = ({ componentObject }) => {
       <button type="submit" className={css.btn}>
         {componentObject.button}
       </button>
+      <Toaster />
+      
     </form>
   );
 };

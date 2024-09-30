@@ -156,6 +156,7 @@
   position: absolute;
   top: 24px;
   right: 24px;
+  cursor: pointer;
 }
 
 .red {
@@ -168,6 +169,7 @@
   right: 24px;
   stroke: red;
   fill: red;
+  cursor: pointer;
   /* background-color: red;
   border: none; */
 }

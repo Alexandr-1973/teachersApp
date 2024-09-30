@@ -1,0 +1,62 @@
+/* .genDiv {
+  background-color: #f8f8f8;
+  padding-bottom: 96px;
+} */
+
+
+
+
+
+
+.teachersUl {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-left: auto;
+  margin-right: auto; */
+  gap: 53px;
+  background-color: #f8f8f8;
+  padding-top: 32px;
+  /* margin-left: 10px;
+  margin-right: 10px; */
+  /* padding-left: 10px;
+  padding-right: 10px; */
+  padding-bottom: 64px;
+}
+
+.teachersLi {
+  /* margin-left: 50px;
+  margin-right: 50px; */
+  /* min-width: 250px;
+  padding-left: 20px;
+  padding-right: 20px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* max-width: 82.2%; */
+  /* width: 85%; */
+  /* width: 82.2vw; */
+}
+
+/* .loadMore {
+  
+  border-radius: 12px;
+padding: 16px 48px;
+width: 183px;
+height: 60px;
+background: #f4c550;
+font-family: "Roboto", sans-serif;
+font-weight: 700;
+font-size: 18px;
+line-height: 1.55556;
+color: #121417;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-right: auto;
+margin-left: auto;
+border: none;
+padding-block: 0;
+    padding-inline: 0;
+} */

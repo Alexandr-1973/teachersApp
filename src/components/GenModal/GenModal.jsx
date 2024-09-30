@@ -5,7 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import TrialBookForm from "../TrialBookForm/TrialBookForm";
 import { selectTeachers } from "../../redux/teachers/teachersSlice";
 import { useSelector } from "react-redux";
-
+import { useEffect, useState } from "react";
 
 Modal.setAppElement("#root");
 
@@ -16,20 +16,19 @@ const GenModal = ({
   teacherPhoto,
   teacherName,
   classModal,
-  index,
 }) => {
+
  
- 
-  
-  
 
   function closeModal() {
+
     setIsModal(false);
   }
 
+
+
   return (
     <Modal
-      
       isOpen={isModal}
       overlayClassName={css.overlay}
       // appElement={document.getElementById("hereIsYourRootElementId")}
@@ -38,11 +37,16 @@ const GenModal = ({
       // onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
       className={css[classModal]}
+      closeTimeoutMS={500}
       style={{
         overlay: {
           position: `${classModal === "modalTrialBook" ? "absolute" : "fixed"}`,
           // width: "100%",
-          height: `${document.documentElement.scrollHeight}px`,
+          height: `${document.documentElement.scrollHeight+500}px`,
+          
+          transition: 'opacity 0.5s ease-in-out', // Анимация плавного исчезновения оверлея
+            opacity: isModal ? 1 : 0, 
+          // `${document.documentElement.scrollHeight}px`,
 
           // height: `${window.scrollY}px`,
 
@@ -51,25 +55,33 @@ const GenModal = ({
           // right: 0,
           // bottom: 0,
           backgroundColor: "rgba(159, 186, 174, 0.2)",
+          
+          // "rgba(248, 248, 248, 0.7)",
+          
+          // "rgba(159, 186, 174, 0.2)",
           paddingLeft: 10,
           paddingRight: 10,
         },
 
         content: {
-          top:index ===useSelector(selectTeachers).length-1? `${window.scrollY-200}px`: `${window.scrollY}px`,
+          top: `${window.scrollY}px`,
+          transition: 'opacity 0.5s ease-in-out', // Анимация плавного исчезновения
+            opacity: isModal ? 1 : 0, 
+            // index === useSelector(selectTeachers).length - 1
+            //   ? `${window.scrollY}px`
+            //   : `${window.scrollY}px`,
         },
       }}
     >
       <IoMdClose className={css.icon} onClick={closeModal} />
 
       {componentObject !== "trialBtn" && (
-        <GenAuthForm componentObject={componentObject} />
+        <GenAuthForm componentObject={componentObject} closeModal={closeModal}/>
       )}
 
       {componentObject === "trialBtn" && (
-        <TrialBookForm teacherPhoto={teacherPhoto} teacherName={teacherName}/>
+        <TrialBookForm teacherPhoto={teacherPhoto} teacherName={teacherName} />
       )}
-      
     </Modal>
   );
 };

@@ -38,6 +38,15 @@ const Navigation = () => {
             Teachers
           </NavLink>
         </li>
+        {isLogin && <li>
+          <NavLink
+            to="/favorite"
+            className={({ isActive }) => (isActive ? css.active : "")}
+          >
+            Favorite
+          </NavLink>
+        </li>}
+
       </ul>
       <ul className={css.login}>
         { !isLogin && <li>

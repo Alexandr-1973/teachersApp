@@ -114,6 +114,10 @@
   padding-block: 0;
 }
 
+.btn:hover{
+  background-color: #CBDED3;
+}
+
 .ul {
   display: flex;
   flex-wrap: wrap;

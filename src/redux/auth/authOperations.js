@@ -20,6 +20,7 @@ export const registerUser = async (name, email, password) => {
     return user;
   } catch (error) {
     console.log(error);
+  return error.message;
   }
 };
 
@@ -34,6 +35,7 @@ export const logInUser = async (email, password) => {
     return user;
   } catch (error) {
     console.log(error);
+    return error.message;
   }
 };
 

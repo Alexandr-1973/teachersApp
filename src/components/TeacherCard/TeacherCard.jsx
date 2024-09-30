@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import css from "./TeacherCard.module.css";
 import AddCardInfo from "../AddCardInfo/AddCardInfo";
 import TrialBtn from "../TrialBtn/TrialBtn";
@@ -10,26 +10,44 @@ import { PiLineVertical } from "react-icons/pi";
 import { selectFavorite } from "../../redux/favorite/favoriteSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { clickFavorite } from "../../redux/favorite/favoriteSlice.js";
+import toast, { Toaster } from 'react-hot-toast';
+import { selectIsLoggedIn } from "../../redux/auth/authSlice.js";
 
-const TeacherCard = ({ teacher, index }) => {
+const TeacherCard = ({ teacher}) => {
+  const notify = () => toast('Please log in!');
   const favoriteTeachers = useSelector(selectFavorite);
+  const isLogin = useSelector(selectIsLoggedIn);
 
   const dispatch = useDispatch();
   const [openAddInfo, setOpenAddInfo] = useState(false);
-  const [classIcon, setClassIcon] = useState(() => {
-    if (
-      favoriteTeachers &&
+  const [classIcon, setClassIcon] = useState()
+  
+
+  useEffect(()=>{
+    if (isLogin &&
+      favoriteTeachers.length>0 &&
       favoriteTeachers.some((item) => item.avatar_url === teacher.avatar_url)
     ) {
-      return "red";
+      
+      
+      setClassIcon("red");
     } else {
-      return "white";
-    }
-  });
+      setClassIcon("white");
+    };
+    setOpenAddInfo(false);
+  }, [favoriteTeachers, teacher.avatar_url, isLogin])
 
   const handleClick = () => {
-    classIcon === "white" ? setClassIcon("red") : setClassIcon("white");
+if (isLogin) {
+  classIcon === "white" ? setClassIcon("red") : setClassIcon("white");
     dispatch(clickFavorite(teacher));
+}
+else {
+  notify();
+}
+
+    // classIcon === "white" ? setClassIcon("red") : setClassIcon("white");
+    // dispatch(clickFavorite(teacher));
   };
 
   return (
@@ -65,6 +83,7 @@ const TeacherCard = ({ teacher, index }) => {
             </p>
           </div>
           <FiHeart className={css[classIcon]} onClick={() => handleClick()} />
+          <Toaster />
         </div>
 
         <h2 className={css.teacherName}>
@@ -124,7 +143,6 @@ const TeacherCard = ({ teacher, index }) => {
           <TrialBtn
             teacherPhoto={teacher.avatar_url}
             teacherName={`${teacher.name} ${teacher.surname}`}
-            index={index}
           />
         )}
       </div>
