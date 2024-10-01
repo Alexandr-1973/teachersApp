@@ -1,15 +1,30 @@
 import { useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import css from "./CustomSelect.module.css";
+import {
+  changeLanguage,
+  changeLevel,
+  changePrice,
+} from "../../redux/filters/filtersSlice";
+import { useDispatch } from "react-redux";
 
-const CustomSelect = ({ options, title, widthElem, selectValue, toggleOptions }) => {
+const CustomSelect = ({ options, title, widthElem, selectValue }) => {
   const [isOpen, setIsOpen] = useState(false);
-//   const [selectedOption, setSelectedOption] = useState("any");
+  const dispatch = useDispatch();
 
   const handleOptionClick = (option) => {
+    if (title === "Languages") {
+      dispatch(changeLanguage(option));
+    }
 
-toggleOptions(option);
-    // setSelectedOption(option);
+    if (title === "Level of knowledge") {
+      dispatch(changeLevel(option));
+    }
+
+    if (title === "Max price") {
+      dispatch(changePrice(Number(option)));
+    }
+
     setIsOpen(false);
   };
 

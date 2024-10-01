@@ -3,11 +3,10 @@ import css from "./HomePages.module.css";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const navigate=useNavigate();
-  // const adr= "../../images/block-opt.jpg";
+  const navigate = useNavigate();
+
   return (
     <div className={css.pageDiv}>
-      {/* <div className={css.decorLeft} /> */}
       <div className={css.genDiv}>
         <div className={css.text}>
           <h1 className={css.h}>
@@ -19,7 +18,14 @@ const HomePage = () => {
             Elevate your language proficiency to new heights by connecting with
             highly qualified and experienced tutors.
           </p>
-          <button className={css.btn} onClick={()=>{navigate("/teachers")}}>Get started</button>
+          <button
+            className={css.btn}
+            onClick={() => {
+              navigate("/teachers");
+            }}
+          >
+            Get started
+          </button>
         </div>
         <img className={css.img} src={image} alt="Some teacher's photo" />
       </div>
@@ -50,7 +56,6 @@ const HomePage = () => {
           </span>
         </li>
       </ul>
-      {/* <div className={css.decorRight} /> */}
     </div>
   );
 };

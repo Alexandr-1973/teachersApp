@@ -8,22 +8,17 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import TeachersList from "../../components/TeachersList/TeachersList";
 import CustomSelect from "../../components/CustomSelect/CustomSelect";
-
-import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore'; 
-
+import { filtersSelector } from "../../redux/filters/filtersSlice";
 
 const Teachers = () => {
   const [startNumber, setStartNumber] = useState(0);
   const [isLoadMore, setIsLoadMore] = useState(true);
-  const [firstSelectValue, setFirstSelectValue] = useState("any");
-  const [secondSelectValue, setSecondSelectValue] = useState("any");
-  const [thirdSelectValue, setThirdSelectValue] = useState("any");
-
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const teachers = useSelector(selectTeachers);
+  const filters = useSelector(filtersSelector);
 
   const languagesOptions = [
-    "any",
     "French",
     "English",
     "German",
@@ -31,31 +26,12 @@ const Teachers = () => {
     "Polish",
   ];
   const levelsOptions = [
-    "any",
     "A1 Beginner",
     "A2 Elementary",
     "B1 Intermediate",
     "B2 Upper-Intermediate",
   ];
-  const priceOptions = ["any", "10", "20", "30", "40"];
-
-  const toggleOptions=(selectedOption)=>{
-if (languagesOptions.includes(selectedOption)){
-setFirstSelectValue(selectedOption);
-setSecondSelectValue("any");
-setThirdSelectValue("any");
-}
-if (levelsOptions.includes(selectedOption)){
-  setFirstSelectValue("any");
-  setSecondSelectValue(selectedOption);
-  setThirdSelectValue("any");
-  }
-  if (priceOptions.includes(selectedOption)){
-    setFirstSelectValue("any");
-    setSecondSelectValue("any");
-    setThirdSelectValue(selectedOption);
-    }
-  }
+  const priceOptions = ["10", "20", "30", "40"];
 
   useEffect(() => {
     document.body.style.backgroundColor = "#f8f8f8";
@@ -65,21 +41,48 @@ if (levelsOptions.includes(selectedOption)){
   }, []);
 
   useEffect(() => {
-    const getTeachersDb = async () => {
-      const teachersArray = await getTeachers(startNumber);
-      if (teachersArray.length > 0) {
-        dispatch(setTeachers(teachersArray));
-        window.scrollTo(0, 0);
-      }
-      if (teachersArray.length < 4) {
-        setIsLoadMore(false);
-      }
-      console.log(teachersArray);
-    };
-    getTeachersDb();
-  }, [dispatch, startNumber]);
+    // The request is made with only a Price filter since the firebase Realtime database does
+    // not support multiple filters in queries and also does not support the ability
+    // to access array values, and the values of languages and levels are contained in arrays.
+    // The rest of the filters are taken into account on the front end.
 
- 
+    const getTeachersDb = async () => {
+      setIsLoading(true);
+
+      try {
+        const teachersArray = await getTeachers(filters.price);
+        const filteredArray = teachersArray.filter(
+          (item) =>
+            item.levels.includes(filters.level) &&
+            item.languages.includes(filters.language)
+        );
+
+        setStartNumber(0);
+
+        if (filteredArray.length <= 4) {
+          setIsLoadMore(false);
+        } else {
+          setIsLoadMore(true);
+        }
+
+        dispatch(setTeachers(filteredArray));
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getTeachersDb();
+  }, [dispatch, filters]);
+
+  const handleClick = () => {
+    setStartNumber(startNumber + 4);
+    window.scrollTo(0, 0);
+    if (startNumber + 8 >= teachers.length) {
+      setIsLoadMore(false);
+    }
+  };
 
   return (
     <div className={css.genDiv}>
@@ -89,8 +92,7 @@ if (levelsOptions.includes(selectedOption)){
             options={languagesOptions}
             title="Languages"
             widthElem="221px"
-            selectValue={firstSelectValue}
-            toggleOptions={toggleOptions}
+            selectValue={filters.language}
           />
         </li>
         <li>
@@ -98,28 +100,33 @@ if (levelsOptions.includes(selectedOption)){
             options={levelsOptions}
             title="Level of knowledge"
             widthElem="250px"
-            selectValue={secondSelectValue}
-            toggleOptions={toggleOptions}
+            selectValue={filters.level}
           />
         </li>
         <li>
           <CustomSelect
             options={priceOptions}
-            title="Price"
+            title="Max price"
             widthElem="124px"
-            selectValue={thirdSelectValue}
-            toggleOptions={toggleOptions}
+            selectValue={filters.price}
           />
         </li>
       </ul>
 
-      <TeachersList teachers={teachers} />
+      {isLoading ? (
+        <p className={css.loading}>Loading...</p>
+      ) : (
+        <TeachersList teachers={teachers.slice(startNumber, startNumber + 4)} />
+      )}
+      {!isLoading && teachers.length === 0 && (
+        <p className={css.notFoundP}>Not found</p>
+      )}
 
-      {isLoadMore && (
+      {isLoadMore && !isLoading && (
         <button
           className={css.loadMore}
           onClick={() => {
-            setStartNumber(startNumber + 4);
+            handleClick();
           }}
         >
           Load more

@@ -10,44 +10,38 @@ import { PiLineVertical } from "react-icons/pi";
 import { selectFavorite } from "../../redux/favorite/favoriteSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { clickFavorite } from "../../redux/favorite/favoriteSlice.js";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 import { selectIsLoggedIn } from "../../redux/auth/authSlice.js";
 
-const TeacherCard = ({ teacher}) => {
-  const notify = () => toast('Please log in!');
+const TeacherCard = ({ teacher }) => {
+  const notify = () => toast("Please log in!");
   const favoriteTeachers = useSelector(selectFavorite);
   const isLogin = useSelector(selectIsLoggedIn);
 
   const dispatch = useDispatch();
   const [openAddInfo, setOpenAddInfo] = useState(false);
-  const [classIcon, setClassIcon] = useState()
-  
+  const [classIcon, setClassIcon] = useState();
 
-  useEffect(()=>{
-    if (isLogin &&
-      favoriteTeachers.length>0 &&
+  useEffect(() => {
+    if (
+      isLogin &&
+      favoriteTeachers.length > 0 &&
       favoriteTeachers.some((item) => item.avatar_url === teacher.avatar_url)
     ) {
-      
-      
       setClassIcon("red");
     } else {
       setClassIcon("white");
-    };
+    }
     setOpenAddInfo(false);
-  }, [favoriteTeachers, teacher.avatar_url, isLogin])
+  }, [favoriteTeachers, teacher.avatar_url, isLogin]);
 
   const handleClick = () => {
-if (isLogin) {
-  classIcon === "white" ? setClassIcon("red") : setClassIcon("white");
-    dispatch(clickFavorite(teacher));
-}
-else {
-  notify();
-}
-
-    // classIcon === "white" ? setClassIcon("red") : setClassIcon("white");
-    // dispatch(clickFavorite(teacher));
+    if (isLogin) {
+      classIcon === "white" ? setClassIcon("red") : setClassIcon("white");
+      dispatch(clickFavorite(teacher));
+    } else {
+      notify();
+    }
   };
 
   return (

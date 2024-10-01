@@ -15,7 +15,6 @@ import { favoriteReducer } from "../redux/favorite/favoriteSlice";
 import { filtersReducer } from "../redux/filters/filtersSlice";
 import { authReducer } from "./auth/authSlice";
 
-// Persisting token field from auth slice to localstorage
 const authPersistConfig = {
   key: "auth",
   storage,
@@ -25,7 +24,7 @@ const authPersistConfig = {
 const favoritePersistConfig = {
   key: "favorite",
   storage,
-  whitelist: ["items"], // Если есть определенные поля для сохранения
+  whitelist: ["items"],
 };
 
 export const store = configureStore({
@@ -41,7 +40,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-    devTools: import.meta.env.MODE === "development",
+  devTools: import.meta.env.MODE === "development",
 });
 
 export const persistor = persistStore(store);

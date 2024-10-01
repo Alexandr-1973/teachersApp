@@ -5,7 +5,6 @@
 }
 
 .loadMore {
-  /* margin-bottom: 96px; */
   border-radius: 12px;
   padding: 16px 48px;
   width: 183px;
@@ -32,73 +31,63 @@
   flex-wrap: wrap;
   margin-left: 8.75vw;
   margin-bottom: 20px;
-  /* margin-left: 100px; */
 }
 
 .label {
- 
-position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
   font-family: "Roboto", sans-serif;
-font-weight: 500;
-font-size: 14px;
-line-height: 1.28571;
-color: #8a8a89;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: #8a8a89;
 }
 
 .select {
-
-  appearance:none;
-
+  appearance: none;
   font-family: "Roboto", sans-serif;
-font-weight: 500;
-font-size: 18px;
-line-height: 1.11111;
-color: #121417;
-border-radius: 14px;
-padding-top: 14px;
-padding-bottom:  14px;
-padding-right: 34px;
- padding-left: 18px;
-/* width: 221px; */
-height: 48px;
-background: #fff;
-border:none;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11111;
+  color: #121417;
+  border-radius: 14px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-right: 34px;
+  padding-left: 18px;
+  height: 48px;
+  background: #fff;
+  border: none;
 }
 
 .option {
-  /* appearance:; */
   background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* .arrow {
-  position: absolute;
-  top: 40px;
-  right: 14px;
-  width: 20px;
-  height: 20px;
-  fill:#121417;
-} */
-
-/* .transprent {
-  background-color: red;
-  position: absolute;
-  top: 40px;
-  right: 14px;
-  width: 20px;
-  height: 20px;
-  z-index: -1;
-} */
- .dollar {
+.dollar {
   position: absolute;
   top: 40px;
   right: 14px;
   height: 18px;
   stroke: #121417;
   fill: #121417;
- }
+}
+
+.notFoundP {
+  margin-left: 29vw;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11111;
+  color: red;
+  padding-left: 18px;
+}
+
+.loading {
+  margin-left: 45vw;
+}

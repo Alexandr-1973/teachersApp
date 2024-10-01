@@ -20,7 +20,7 @@ export const registerUser = async (name, email, password) => {
     return user;
   } catch (error) {
     console.log(error);
-  return error.message;
+    return error.message;
   }
 };
 

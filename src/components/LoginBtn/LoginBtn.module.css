@@ -1,19 +1,19 @@
 .logButton {
-	display: flex;
-	align-items: center;
-	font-family: "Roboto", sans-serif;
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 1.25;
-	color: #121417;
-	border: none;
-	gap: 8px;
-	background-color: inherit;
-  }
+  display: flex;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #121417;
+  border: none;
+  gap: 8px;
+  background-color: inherit;
+}
 
-  .loginIcon {
-	width: 20px;
-	height: 20px;
-	stroke: #9FBAAE;
-	stroke-width: 2px;
-  }
+.loginIcon {
+  width: 20px;
+  height: 20px;
+  stroke: #9fbaae;
+  stroke-width: 2px;
+}

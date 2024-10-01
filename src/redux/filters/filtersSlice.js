@@ -1,17 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+  language: "English",
+  level: "A1 Beginner",
+  price: 30,
+};
 
 const filtersSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    changeFilter: (state, action) => {
-      state.filters = action.payload;
+    changeLanguage: (state, action) => {
+      state.language = action.payload;
+    },
+
+    changeLevel: (state, action) => {
+      state.level = action.payload;
+    },
+
+    changePrice: (state, action) => {
+      state.price = action.payload;
     },
   },
 });
 
-export const { changeFilter } = filtersSlice.actions;
+export const { changeLanguage, changeLevel, changePrice } =
+  filtersSlice.actions;
+
 export const filtersReducer = filtersSlice.reducer;
-export const filtersSelector = (state) => state.filter;
+export const filtersSelector = (state) => state.filters;

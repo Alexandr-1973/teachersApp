@@ -1,21 +1,12 @@
 .genDiv {
   display: flex;
-  /* margin-left: auto; */
-  /* max-width: 1184px; */
+
   border-radius: 24px;
   background-color: #fff;
   padding: 24px;
   gap: 24px;
-  /* column-gap: 48px;
-  row-gap: 24px; */
-  /* width: 82%; */
-  /* max-width: max(1184px, 91%); */
-  /* overflow: scroll; */
   flex-wrap: wrap;
   position: relative;
-  /* margin-left: 20px;
-  margin-right: 20px; */
-  /* min-width: 250px; */
   width: 82.2vw;
   position: relative;
 }
@@ -25,7 +16,6 @@
   height: 12px;
   fill: #38cd3e;
   border: 2px solid #fff;
-
   border-radius: 100%;
   position: absolute;
   top: 47px;
@@ -35,9 +25,7 @@
 .teacherImg {
   width: 120px;
   height: 120px;
-  /* border-radius: 50%; */
   padding: 12px;
-
   border: 3px solid #fbe9ba;
   border-radius: 100px;
 }
@@ -46,28 +34,18 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  /* margin-left: 10px;
-  margin-right: 10px; */
-  /* min-width: 250px; */
-  /* width: 81.8%;
-  min-width: 100px; */
   width: 67.2vw;
 }
 
 .languagesDiv {
   display: flex;
-  /* width: 100%; */
   align-items: center;
-  /* outline: 2px solid red; */
-  /* height: 16px; */
   margin-bottom: 8px;
   flex-wrap: wrap;
-  /* min-width: 250px; */
 }
 
 .highDiv {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   margin-right: 64px;
   column-gap: 16px;
@@ -75,9 +53,6 @@
 }
 
 .highP {
-  /* padding-left: 16px;
-	padding-right: 16px; */
-  /* border-left: 1px solid rgba(18, 20, 23, 0.2); */
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -93,7 +68,6 @@
   display: flex;
   align-items: center;
   column-gap: 8px;
-
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -112,17 +86,6 @@
   margin: 0;
   padding: 0;
   margin-right: 11.85vw;
-  /* margin-right: 190px; */
-}
-
-/* @media (min-width: 1440px) {
-  .languageP {
-      margin-right: 190px;
-  }
-} */
-
-.lessonInfoLi {
-  /* word-break:keep-all; */
 }
 
 .starIcon {
@@ -142,8 +105,6 @@
 }
 
 .greenSpan {
-  /* padding: 0;
-	margin: 0; */
   color: #38cd3e;
   margin-left: 4px;
 }
@@ -163,17 +124,13 @@
   width: 26px;
   height: 22px;
   stroke-width: 2px;
-  /* stroke: red; */
   position: absolute;
   top: 24px;
   right: 24px;
   stroke: red;
   fill: red;
   cursor: pointer;
-  /* background-color: red;
-  border: none; */
 }
-
 
 .teacherName {
   margin-bottom: 32px;
@@ -229,18 +186,12 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-
-  /* margin-bottom: 32px; */
-  /* max-width: 70%; */
-  /* width: 40%; */
 }
 
 .levelLi {
   border: 1px solid rgba(18, 20, 23, 0.2);
   border-radius: 35px;
   padding: 8px 12px;
-  /* width: 124px; */
-  /* height: 32px; */
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -260,6 +211,5 @@
 .vertIcon {
   height: 16px;
   stroke-width: 2px;
-  
-  fill: rgba(18, 20, 23, 0.2);;
-} 
+  fill: rgba(18, 20, 23, 0.2);
+}

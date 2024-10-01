@@ -9,18 +9,16 @@ import { useSelector } from "react-redux";
 
 const Navigation = () => {
   const isLogin = useSelector(selectIsLoggedIn);
-  
+
   return (
     <nav className={css.nav}>
-      {/* <div className={css.logoDiv}> */}
       <Link className={css.logoDiv} to="/">
         <svg width="28px" height="28px">
           <use href={`${sprite}#icon-ukraine`}></use>
         </svg>
-        {/* <p className={css.logo}>LearnLingo</p> */}
         LearnLingo
       </Link>
-      {/* </div> */}
+
       <ul className={css.pages}>
         <li>
           <NavLink
@@ -38,31 +36,34 @@ const Navigation = () => {
             Teachers
           </NavLink>
         </li>
-        {isLogin && <li>
-          <NavLink
-            to="/favorite"
-            className={({ isActive }) => (isActive ? css.active : "")}
-          >
-            Favorite
-          </NavLink>
-        </li>}
-
+        {isLogin && (
+          <li>
+            <NavLink
+              to="/favorite"
+              className={({ isActive }) => (isActive ? css.active : "")}
+            >
+              Favorite
+            </NavLink>
+          </li>
+        )}
       </ul>
       <ul className={css.login}>
-        { !isLogin && <li>
+        {!isLogin && (
+          <li>
+            <LoginBtn />
+          </li>
+        )}
+        {!isLogin && (
+          <li>
+            <RegistrationBtn />
+          </li>
+        )}
 
-          <LoginBtn />
-        
-        </li>}
-        {!isLogin && <li>
-          <RegistrationBtn />
-          
-        </li>}
-
-
-        {isLogin && <li>
-<LogOutBtn />
-        </li>}
+        {isLogin && (
+          <li>
+            <LogOutBtn />
+          </li>
+        )}
       </ul>
     </nav>
   );

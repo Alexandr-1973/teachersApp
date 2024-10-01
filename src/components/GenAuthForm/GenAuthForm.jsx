@@ -9,8 +9,7 @@ import { registerUser, logInUser } from "../../redux/auth/authOperations";
 import { setIsLogin } from "../../redux/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
-
+import toast, { Toaster } from "react-hot-toast";
 
 const schemaRegistration = yup
   .object({
@@ -34,14 +33,14 @@ const schemaLogin = yup
   .required();
 
 const GenAuthForm = ({ componentObject, closeModal }) => {
+  const notify = (message) =>
+    toast(message, {
+      style: { color: "red" },
+      duration: 5000,
+    });
 
-  const notify = (message) => toast(message,{
-    style: {color:"red"},
-    duration: 5000,
-  });
+  const navigate = useNavigate();
 
-  const navigate=useNavigate();
-  
   const dispatch = useDispatch();
 
   const [type, setType] = useState("password");
@@ -57,32 +56,20 @@ const GenAuthForm = ({ componentObject, closeModal }) => {
     ),
   });
 
-
-  // if (typeof("lola")==="string"){
-  //   console.log("kuku");
-    
-  // }
-  
-
   const onSubmit = async (data) => {
     if (componentObject.h === "Registration") {
       const res = await registerUser(data.name, data.email, data.password);
 
-      if (typeof(res)==="string") {
-
-        if (res==="Firebase: Error (auth/email-already-in-use)."){
+      if (typeof res === "string") {
+        if (res === "Firebase: Error (auth/email-already-in-use).") {
           notify("Your email already in used. Please click Log in button.");
-        }
-        else{
+        } else {
           notify(res);
         }
         setTimeout(() => {
           closeModal();
         }, "5000");
-
-         console.log(res);
-// closeModal();
-         return;
+        return;
       }
 
       dispatch(
@@ -92,31 +79,23 @@ const GenAuthForm = ({ componentObject, closeModal }) => {
           accessToken: res.accessToken,
         })
       );
-
-      console.log(res);
     }
 
     if (componentObject.h === "Log In") {
       const res = await logInUser(data.email, data.password);
 
-      if (typeof(res)==="string") {
-
-        if (res==="Firebase: Error (auth/invalid-credential)."){
+      if (typeof res === "string") {
+        if (res === "Firebase: Error (auth/invalid-credential).") {
           notify("Sorry, invalid credential.");
-        }
-        else{
+        } else {
           notify(res);
         }
         setTimeout(() => {
           closeModal();
         }, "5000");
 
-         console.log(res);
-// closeModal();
-         return;
+        return;
       }
-
-
 
       dispatch(
         setIsLogin({
@@ -125,11 +104,9 @@ const GenAuthForm = ({ componentObject, closeModal }) => {
           accessToken: res.accessToken,
         })
       );
-      console.log(res);
     }
     navigate("/teachers");
     reset();
-    
   };
 
   return (
@@ -174,7 +151,6 @@ const GenAuthForm = ({ componentObject, closeModal }) => {
         {componentObject.button}
       </button>
       <Toaster />
-      
     </form>
   );
 };

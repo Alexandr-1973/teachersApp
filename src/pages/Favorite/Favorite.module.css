@@ -1,0 +1,9 @@
+.notSelectedP {
+  margin-left: 25vw;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11111;
+  color: red;
+  padding-left: 18px;
+}
