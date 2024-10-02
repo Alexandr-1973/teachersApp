@@ -6,8 +6,6 @@ import Teachers from "./pages/Teachers/Teachers";
 import Favorite from "./pages/Favorite/Favorite";
 
 function App() {
-  //
-
   return (
     <>
       <Navigation />
@@ -15,6 +13,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/teachers" element={<Teachers />} />
         <Route path="/favorite" element={<Favorite />} />
+        <Route path="*" element={<HomePage />} />
       </Routes>
     </>
   );

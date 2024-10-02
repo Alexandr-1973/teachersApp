@@ -12,7 +12,6 @@ export const getTeachers = async (price) => {
 
       return teachersArray;
     } else {
-      console.log("No data available");
       return [];
     }
   } catch (error) {

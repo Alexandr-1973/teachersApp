@@ -15,12 +15,6 @@ import { favoriteReducer } from "../redux/favorite/favoriteSlice";
 import { filtersReducer } from "../redux/filters/filtersSlice";
 import { authReducer } from "./auth/authSlice";
 
-const authPersistConfig = {
-  key: "auth",
-  storage,
-  whitelist: ["token"],
-};
-
 const favoritePersistConfig = {
   key: "favorite",
   storage,
@@ -29,7 +23,7 @@ const favoritePersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
+    auth: authReducer,
     teachers: teachersReducer,
     filters: filtersReducer,
     favorite: persistReducer(favoritePersistConfig, favoriteReducer),

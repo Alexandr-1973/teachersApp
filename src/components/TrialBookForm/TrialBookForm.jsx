@@ -28,8 +28,7 @@ const TrialBookForm = ({ teacherPhoto, teacherName, closeModal }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
     reset();
     closeModal();
   };
