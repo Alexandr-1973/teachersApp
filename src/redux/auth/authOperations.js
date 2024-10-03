@@ -19,7 +19,6 @@ export const registerUser = async (name, email, password) => {
     });
     return user;
   } catch (error) {
-    console.log(error);
     return error.message;
   }
 };
@@ -34,15 +33,10 @@ export const logInUser = async (email, password) => {
     const user = userCredential.user;
     return user;
   } catch (error) {
-    console.log(error);
     return error.message;
   }
 };
 
 export const logoutUser = async () => {
-  try {
-    await signOut(auth);
-  } catch (error) {
-    console.log(error);
-  }
+  await signOut(auth);
 };

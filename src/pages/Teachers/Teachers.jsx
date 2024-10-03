@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import TeachersList from "../../components/TeachersList/TeachersList";
 import CustomSelect from "../../components/CustomSelect/CustomSelect";
 import { filtersSelector } from "../../redux/filters/filtersSlice";
+import toast, { Toaster } from "react-hot-toast";
 
 const Teachers = () => {
   const [startNumber, setStartNumber] = useState(0);
@@ -17,6 +18,11 @@ const Teachers = () => {
   const dispatch = useDispatch();
   const teachers = useSelector(selectTeachers);
   const filters = useSelector(filtersSelector);
+  const notify = (message) =>
+    toast(message, {
+      style: { color: "red" },
+      duration: 5000,
+    });
 
   const languagesOptions = [
     "French",
@@ -67,7 +73,7 @@ const Teachers = () => {
 
         dispatch(setTeachers(filteredArray));
       } catch (error) {
-        console.log(error);
+        notify(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -86,6 +92,7 @@ const Teachers = () => {
 
   return (
     <div className={css.genDiv}>
+      <Toaster />
       <ul className={css.ul}>
         <li>
           <CustomSelect
