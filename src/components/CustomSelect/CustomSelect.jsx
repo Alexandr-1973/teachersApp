@@ -32,7 +32,7 @@ const CustomSelect = ({ options, title, widthElem, selectValue }) => {
     <div className={css.customSelect} style={{ width: widthElem }}>
       <p className={css.title}>{title}</p>
       <div className={css.selectLabel} onClick={() => setIsOpen(!isOpen)}>
-        {selectValue} {title === "Price" && selectValue !== "any" && "$"}
+        {selectValue} {title === "Max price" ? "$" : ""}
         <MdOutlineKeyboardArrowDown className={css.arrow} />
       </div>
       {isOpen && (
