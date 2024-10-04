@@ -26,7 +26,7 @@ const GenModal = ({
       className={css[classModal]}
       style={{
         overlay: {
-          position: `${classModal === "modalTrialBook" ? "absolute" : "fixed"}`,
+          position: "absolute",
           height: `${document.documentElement.scrollHeight + 500}px`,
           backgroundColor: "rgba(159, 186, 174, 0.2)",
           paddingLeft: 10,
