@@ -18,7 +18,7 @@ const Favorite = () => {
     <>
       <TeachersList teachers={favoriteTeachers} />
       {favoriteTeachers.length === 0 && (
-        <p className={css.notSelectedP}>Fovourites are not selected</p>
+        <p className={css.notSelectedP}>Favorites are not selected</p>
       )}
     </>
   );
